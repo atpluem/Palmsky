@@ -1,0 +1,8 @@
+diff a/pages/index.js b/pages/index.js	(rejected hunks)
+@@ -10,7 +10,6 @@
+ 
+       <main>
+         <h1 className="title">
+	   กมคือแก๊บมา	
+         </h1>
+ 
