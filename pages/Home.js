@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Navbar from '../home/Nav'
-import Header from '../home/Header'
+import Navbar from './Nav'
+import Header from './Header'
 
 export default function Home() {
   return (
