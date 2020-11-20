@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div>
+    <div style = {{ position: '-webkit-sticky', position: "sticky", top: 0, zIndex: 2 }}>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link href="/Home">
           <a className="navbar-brand">PALMSKY</a>
