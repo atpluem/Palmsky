@@ -1,6 +1,7 @@
 .container {
     display: flex;
-    padding: 20px 55px;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 .item {
     flex: 0 0 20%;
@@ -8,21 +9,12 @@
     margin: 0 2px;
     transition: transform 300ms ease 100ms;
 }
-.container:hover .item {
-    transform: translateX(-25%);
-}
-.item:hover ~ .item {
-    transform: translateX(25%);
-}
 .item:hover {
-    transform: scale(1.5) !important;
+    transform: scale(1.25) !important;
 }
-.set {
-    margin: 200px 100px 100px 0;
+.catName {
+    padding-top: 20px;
+    padding-left: 5%;
+    font-weight: bolder;
+    font-size: xx-large;
 }
-.content {
-    margin-top: 40px;
-    height: 300px;
-    position: relative;
-  }
-  
