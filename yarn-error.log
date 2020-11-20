@@ -1,30 +1,25 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\ICE\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js init
+  C:\Program Files\nodejs\node.exe C:\Users\MSI_TH\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js dev
 
 PATH: 
-  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\ICE\bin;C:\Users\ICE\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\ICE\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;D:\University\CPE326 Software Engineer\chromdriver;C:\Program Files\nodejs;C:\cmder;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\ICE\AppData\Local\Programs\Python\Python39\Scripts;C:\Users\ICE\AppData\Local\Programs\Python\Python39;C:\Users\ICE\AppData\Local\Microsoft\WindowsApps;C:\Users\ICE\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ICE\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  D:\app\PLUEM\product\11.2.0\client_1\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\oraclexe\app\oracle\product\11.2.0\server\bin;D:\ODX\dbhomeXE\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Wolfram Research\WolframScript\;D:\_Producer_\Python\ffmpeg\bin;D:\Flutter\flutter\bin;C:\Users\MSI_TH\AppData\Local\Android\Sdk\platform-tools;C:\Users\MSI_TH\AppData\Local\Android\Sdk\tools;C:\Users\MSI_TH\AppData\Local\Android\Sdk\tools\bin;C:\Program Files\nodejs\;D:\PuTTY\;D:\anaconda3;D:\anaconda3\Scripts;D:\Anaconda3\Library\bin;D:\MATLAB\R2020a\bin;;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\MSI_TH\AppData\Local\Microsoft\WindowsApps;C:\Users\MSI_TH\AppData\Local\atom\bin;C:\Users\MSI_TH\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\MSI_TH\AppData\Local\Microsoft\WindowsApps;C:\Users\MSI_TH\AppData\Local\Android\Sdk\\tools;C:\Users\MSI_TH\AppData\Local\Android\Sdk\\platform-tools;C:\Users\MSI_TH\AppData\Roaming\Pub\Cache\bin;C:\Users\MSI_TH\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Program Files\Java\jre1.8.0_45\bin;C:\Program Files\Java\jdk1.8.0_251\bin;D:\HADOOP\spark-2.4.5-bin-hadoop2.7\bin;C:\Users\MSI_TH\.deno\bin;C:\Program Files (x86)\Google\Chrome\Application;C:\Users\MSI_TH\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin
 
 Yarn version: 
-  1.22.10
+  1.22.0
 
 Node version: 
-  15.0.1
+  12.16.1
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: canceled
-      at Interface.<anonymous> (C:\Users\ICE\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:136216:13)
-      at Interface.emit (node:events:327:20)
-      at Interface._ttyWrite (node:readline:875:16)
-      at ReadStream.onkeypress (node:readline:213:10)
-      at ReadStream.emit (node:events:327:20)
-      at emitKeys (node:internal/readline/utils:345:14)
-      at emitKeys.next (<anonymous>)
-      at ReadStream.onData (node:readline:1144:36)
-      at ReadStream.emit (node:events:327:20)
-      at addChunk (node:internal/streams/readable:304:12)
+  SyntaxError: D:\CPE_KMUTT\YEAR3.1\CPE327 Software Engineering\Project\Palmsky\package.json: Unexpected token < in JSON at position 230
+      at JSON.parse (<anonymous>)
+      at C:\Users\MSI_TH\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\MSI_TH\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\MSI_TH\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
 
 npm manifest: 
   {
@@ -38,14 +33,31 @@ npm manifest:
       "heroku-postbuild": "npm run build"
     },
     "dependencies": {
+  <<<<<<< HEAD
+      "@fortawesome/fontawesome-svg-core": "^1.2.32",
+      "@fortawesome/free-brands-svg-icons": "^5.15.1",
+      "@fortawesome/free-regular-svg-icons": "^5.15.1",
+      "@fortawesome/free-solid-svg-icons": "^5.15.1",
+      "@fortawesome/react-fontawesome": "^0.1.12",
+  =======
+      "@zeit/next-css": "^1.0.1",
+  >>>>>>> 5eada7e39ebb02fe70fad0ee9f638abcdb2023d1
+      "bootstrap": "^4.5.3",
       "next": "^9.5.3",
       "react": "^16.13.1",
-      "react-dom": "^16.13.1"
+      "react-dom": "^16.13.1",
+      "react-elastic-carousel": "^0.9.5",
+      "sass": "^1.29.0",
+      "styled-components": "^5.2.1"
     },
     "engines": {
       "node": "12.16.1",
       "npm": "6.13.4"
-    }
+    },
+    "main": "index.js",
+    "repository": "https://github.com/atpluem/Palmsky",
+    "author": "krittanan chalong <krittananchalong@gmail.com>",
+    "license": "MIT"
   }
 
 yarn manifest: 
