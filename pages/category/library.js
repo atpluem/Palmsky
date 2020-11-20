@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../Nav'
-import Header from '../Header'
+import Navbar from '../../components/Nav'
+import Header from '../../components/Header'
 import Tags from './tags'
 
 const library = () => {
