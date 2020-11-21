@@ -2,18 +2,63 @@ import Header from '../../components/Header';
 import Nav from "../../components/Nav";
 
 export default function choosePayment() {
+    //javascript
+    var countpage = 0;
     var nextclick = function () {
-        $('#cancelbutton').hide();
-        $('#backbutton').show();
+        if (countpage != 2)
+            countpage = countpage + 1;
 
-        $('#choosepaymenttext').hide();
-        $('#creditcardtext').show();
+        if (countpage > 0) {
+            $('#cancelbutton').hide();
+            $('#backbutton').show();
+        }
+        if (countpage == 1) {
+            $('#choosepaymenttext').hide();
+            $('#successpayment').hide();
+            $('#paymentoption').hide();
 
-        $('#paymentoption').hide();
-        $('#creditform  ').show();
+            $('#creditcardtext').show();
+            $('#creditform').show();
+        }
+        if (countpage == 2) {
+            $('#choosepaymenttext').hide();
+            $('#creditcardtext').hide();
+            $('#paymentoption').hide();
+            $('#creditform').hide();
+            $('#next').hide();
+            $('#backbutton').hide();
 
-        console.log("fuck JEAM");
+            $('#continuousbutton').show();
+            $('#successpayment').show();
+        }
+
+
     }
+    var backclick = function () {
+        console.log("backclick");
+        countpage = countpage - 1;
+
+        if (countpage == 0) {
+            $('#backbutton').hide();
+            $('#creditcardtext').hide();
+            $('#creditform').hide();
+
+            $('#choosepaymenttext').show();
+            $('#cancelbutton').show();
+            $('#paymentoption').show();
+
+        }
+        if (countpage == 1) {
+            $('#continuousbutton').hide();
+            $('#next').show();
+            $('#backbutton').show();
+
+            $('#successpayment').hide();
+            $('#creditcardtext').show();
+            $('#creditform  ').show();
+        }
+    }
+    //html
     return <div>
         <div>
             <Header />
@@ -31,7 +76,7 @@ export default function choosePayment() {
                             {/* Header  */}
                             <div className="row justify-content-center" >
                                 <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: 22 }} id="choosepaymenttext">
-                                    Choose your payment method
+                                    Choose payment method
                                 </div>
                                 <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: 22, display: "none" }} id="creditcardtext">
                                     Enter your credit or debit card
@@ -97,24 +142,51 @@ export default function choosePayment() {
                                         <div className="form-group row justify-content-center" >
                                             <input className="form-control" placeholder="Security Code (CVV)" style={{ fontSize: 24, maxWidth: "500px" }} />
                                         </div>
+                                        <div className="form-group row " >
+                                            <div>
+                                                <input type="checkbox" id="savepayment" name="savepayment" value="1" style={{ width: "15px", height: "15px", marginRight: "10px", cursor: "pointer" }} />
+                                                <label htmlFor="savepayment" style={{ fontSize: 18, cursor: "pointer" }}>Save payment information</label>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
+                            <div className="row justify-content-center" style={{ paddingBottom: 10, display: "none" }} id="successpayment">
+                                <form>
+                                    <div className="form-group row justify-content-center" >
+                                        <img src="/images/successpayment.png" alt="" style={{ width: "85%" }} />
+                                    </div>
+                                    <div className="form-group row justify-content-center" >
+                                        <label className="font-weight-bold" style={{ fontSize: 48, cursor: "pointer" }}>SUCCESS</label>
+                                    </div>
+                                    <div className="form-group row justify-content-center" style={{ marginTop: "-30px" }}>
+                                        <label style={{ fontSize: 24, cursor: "pointer" }}>Payment has been completed</label>
+                                    </div>
+                                </form>
+                            </div>
+
 
                             <div className="row justify-content-center ">
                                 <div className="col-md-3 " style={{ width: "50%" }}>
                                     <button type="button" className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%" }} id="cancelbutton">
                                         Cancel
-                                </button>
-                                    <button type="button " className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%", display: "none" }} id="backbutton">
+                                    </button>
+                                    <button onClick={backclick} type="button " className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%", display: "none" }} id="backbutton">
                                         Back
-                                </button>
+                                    </button>
+
+
                                 </div>
+
                                 <div className="col-md-4 " style={{ width: "50%" }}>
                                     <a onClick={nextclick} className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%" }} id="next">
                                         Next
                                     </a>
                                 </div>
+                                <button onClick={backclick} type="button " className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%", maxWidth: "400px", display: "none" }} id="continuousbutton">
+                                    Continuous
+                                    </button>
+
                             </div>
                         </div>
 
@@ -123,6 +195,7 @@ export default function choosePayment() {
             </div>
         </div>
 
+        {/* css */}
         <style jsx>
             {`
             .card{
