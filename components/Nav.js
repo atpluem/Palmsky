@@ -52,7 +52,7 @@ const Navbar = () => {
 
           <div className="nav-item">
             <a className="cart-btn" href="#">
-              <i class="fas fa-shopping-cart"></i>
+              <i className="fas fa-shopping-cart"></i>
             </a>
           </div>
 
@@ -63,7 +63,7 @@ const Navbar = () => {
               id="navbarDropdown"
               data-toggle="dropdown"
             >
-              <i class="fas fa-user"></i>
+              <i className="fas fa-user"></i>
             </a>
             <div
               className="dropdown-menu dropdown-menu-right"
