@@ -5,3 +5,30 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+.cat-btn {
+    background-color: transparent;
+    border: 3px solid #CD2424;
+    width: 150px;
+    color: #CD2424;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.cat-btn:hover {
+    color: #CD2424 ;
+}
+
+.bg-image {  
+    overflow: hidden;
+    margin: 0 auto; 
+} 
+
+.zoom {  
+    width: auto;
+    transition: 0.5s; 
+} 
+
+.zoom:hover {
+    transform: scale(1.5); 
+}

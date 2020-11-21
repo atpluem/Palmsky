@@ -1,6 +1,5 @@
 import React from 'react'
 import Navbar from '../../components/Nav'
-import Header from '../../components/Header'
 import Tags from './tags'
 
 const library = () => {
@@ -8,7 +7,6 @@ const library = () => {
 
     return (
         <div>
-            <Header />
             <Navbar />
 
             {/* Notice */}
@@ -21,7 +19,7 @@ const library = () => {
                     </ol>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img className="d-block w-100" src="https://image.freepik.com/free-photo/gray-painted-background_53876-94041.jpg" alt="slide1" />
+                            <img className="d-block w-100 " src="https://image.freepik.com/free-photo/gray-painted-background_53876-94041.jpg" alt="slide1" />
                         </div>
                         <div className="carousel-item">
                             <img className="d-block w-100" src="https://image.freepik.com/free-photo/gray-painted-background_53876-94041.jpg" alt="slide2" />
@@ -39,24 +37,18 @@ const library = () => {
             </div>
 
             {/* Category Drop */}
-            <div className="dropdown">
-                <button
-                    className="btn btn-primary dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-expanded="false"
-                >
-                    Dropdown button
+            <div className="container d-flex flex-row mb-4">
+                <p className="h4 mt-2 mr-2 font-weight-bold">LIBRARY </p>
+                <div class="dropdown">
+                    <button class="btn cat-btn dropdown-toggle" type="button" id="dropD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        CATEGORY
                     </button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a className="dropdown-item" href="#">Action</a></li>
-                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-            <div className="container d-flex flex-row" style={{ zIndex: 2 }}>
-                <p className="h4 mt-1 mr-2 font-weight-bold">LIBRARY </p>
+                    <div class="dropdown-menu" aria-labelledby="dropD" style={{ backgroundColor: "#CD2424" }} >
+                        <a class="dropdown-item text-white" href="#">option 1</a>
+                        <a class="dropdown-item text-white" href="#">option 2</a>
+                        <a class="dropdown-item text-white" href="#">option 3</a>
+                    </div>
+                </div>
             </div>
 
             {/* Book Category */}

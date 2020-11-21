@@ -12,8 +12,10 @@ const tags = () => {
             <div className = "d-flex flex-row scroll-slide" >
                 {number.map(count => ( 
                     <div className = "mt-3 mr-4">
-                        <div className = "card shadow-sm" style = {{ width: '18rem' }}>
-                            <img className = "card-image-top img-fluid" src = "https://img.freepik.com/free-photo/abstract-surface-textures-white-concrete-stone-wall_74190-8184.jpg?size=626&ext=jpg" alt = "Card" />
+                        <div className = "card shadow-sm" style = {{ width: '18rem'}}>
+                            <div className="bg-image">
+                                <img className = "card-image-top img-fluid zoom " src = "https://img.freepik.com/free-photo/abstract-surface-textures-white-concrete-stone-wall_74190-8184.jpg?size=626&ext=jpg" alt = "Card" />
+                            </div>
                             <div className = "card-body">
                                 <p className = "card-text"> Velit Lorem tempor fugiat esse labore mollit magna Lorem est. </p>
                             </div>
