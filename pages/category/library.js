@@ -39,16 +39,24 @@ const library = () => {
             </div>
 
             {/* Category Drop */}
+            <div className="dropdown">
+                <button
+                    className="btn btn-primary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    Dropdown button
+                    </button>
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a className="dropdown-item" href="#">Action</a></li>
+                    <li><a className="dropdown-item" href="#">Another action</a></li>
+                    <li><a className="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
             <div className="container d-flex flex-row" style={{ zIndex: 2 }}>
                 <p className="h4 mt-1 mr-2 font-weight-bold">LIBRARY </p>
-                <div className = "dropdown" >
-                    <button className = "btn btn-secondary dropdown-toggle" data-toggle = "dropdown" id="dropD" aria-haspopup = "true" aria-expanded = "false" >Category</button>
-                        <div className = "dropdown-menu" aria-labelledby="dropD">
-                            <a className = "dropdown-item"> Option 1</a>
-                            <a className = "dropdown-item"> Option 2</a>
-                            <a className = "dropdown-item"> Option 3</a>
-                        </div>
-                </div>
             </div>
 
             {/* Book Category */}

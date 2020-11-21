@@ -1,0 +1,7 @@
+.scroll-slide {
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
