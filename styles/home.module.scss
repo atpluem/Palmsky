@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.item {
+    flex: 0 0 20%;
+    text-align: center;
+    margin: 0 2px;
+    transition: transform 300ms ease 100ms;
+}
+.item:hover {
+    transform: scale(1.25) !important;
+}
+.catName {
+    padding-top: 20px;
+    padding-left: 5%;
+    font-weight: bolder;
+    font-size: xx-large;
+}

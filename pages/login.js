@@ -1,5 +1,4 @@
-import Header from './Header'
-import Navbar from './Nav'
+import Header from '../components/Header'
 export default function choosePayment() {
     return <div>
         <div>

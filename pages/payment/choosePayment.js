@@ -1,12 +1,24 @@
-import Header from '../Header'
-import Navbar from '../Nav'
+import Header from '../../components/Header';
+import Nav from "../../components/Nav";
+
 export default function choosePayment() {
+    var nextclick = function () {
+        $('#cancelbutton').hide();
+        $('#backbutton').show();
+
+        $('#choosepaymenttext').hide();
+        $('#creditcardtext').show();
+
+        $('#paymentoption').hide();
+        $('#creditform  ').show();
+
+        console.log("fuck JEAM");
+    }
     return <div>
         <div>
             <Header />
-            <Navbar />
+            <Nav />
             <br></br>
-
             <div className="container" >
                 <div id="stepwizard">
                     <div className="parent-div d-flex justify-content-center   " style={{ width: "100%", height: "90vh" }}>
@@ -16,14 +28,18 @@ export default function choosePayment() {
                                     Stepper progress bar
                             </div>
                             </div>
-
-                            <div className="row justify-content-center">
-                                <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: 22 }}>
+                            {/* Header  */}
+                            <div className="row justify-content-center" >
+                                <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: 22 }} id="choosepaymenttext">
                                     Choose your payment method
+                                </div>
+                                <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: 22, display: "none" }} id="creditcardtext">
+                                    Enter your credit or debit card
+                                </div>
                             </div>
-                            </div>
+
                             {/* Credit or Debit card  */}
-                            <div className="row justify-content-center " style={{ paddingBottom: 10 }}>
+                            <div className="row justify-content-center " style={{ paddingBottom: 10 }} id="paymentoption">
                                 <div className="col-centered " style={{ paddingBottom: 10 }}>
                                     <label htmlFor="creditcard" className="card shadow " style={{ width: '20rem' }} id="credit_card">
                                         <div className="card-body text-center">
@@ -54,14 +70,48 @@ export default function choosePayment() {
                                 </div>
                             </div>
 
+                            {/* creditcard form  */}
+                            <div className="row justify-content-center" style={{ paddingBottom: 10, display: "none" }} id="creditform">
+                                <div className="col " style={{ maxWidth: "500px" }}>
+                                    <form>
+                                        <div className="form-group row " >
+                                            <img src="/images/visa.png" alt="" height={50} />
+                                        </div>
+                                        <div className="form-group row justify-content-center" >
+
+                                            <input className="form-control" placeholder="Card Holder Name" style={{ fontSize: 24, maxWidth: "500px" }} />
+                                        </div>
+                                        <div className="form-group row justify-content-center" >
+
+                                            <input className="form-control" placeholder="Card Holder Name" style={{ fontSize: 24, maxWidth: "500px" }} />
+                                        </div>
+                                        <div className="form-group row justify-content-center" >
+                                            <input className="form-control" placeholder="Billing Zip Code" style={{ fontSize: 24, maxWidth: "500px" }} />
+                                        </div>
+                                        <div className="form-group row justify-content-center">
+                                            <input className="form-control" placeholder="Card Number" style={{ fontSize: 24, maxWidth: "500px" }} />
+                                        </div>
+                                        <div className="form-group row justify-content-center" >
+                                            <input className="form-control" placeholder="Expiration Date (MM/YY)" style={{ fontSize: 24, maxWidth: "500px" }} />
+                                        </div>
+                                        <div className="form-group row justify-content-center" >
+                                            <input className="form-control" placeholder="Security Code (CVV)" style={{ fontSize: 24, maxWidth: "500px" }} />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
                             <div className="row justify-content-center ">
                                 <div className="col-md-3 " style={{ width: "50%" }}>
-                                    <button type="button" className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%" }}>
+                                    <button type="button" className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%" }} id="cancelbutton">
                                         Cancel
+                                </button>
+                                    <button type="button " className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%", display: "none" }} id="backbutton">
+                                        Back
                                 </button>
                                 </div>
                                 <div className="col-md-4 " style={{ width: "50%" }}>
-                                    <a className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%" }} id="next">
+                                    <a onClick={nextclick} className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%" }} id="next">
                                         Next
                                     </a>
                                 </div>
@@ -123,13 +173,16 @@ export default function choosePayment() {
             opacity: 1;
             }
 
+            ::-webkit-input-placeholder {
+                text-align: center;
+             }
+             
            `}
         </style>
-        <script>
-            $('#stepwizard').smartWizard();
-        </script>
 
     </div >
+
+
 
 
 }
