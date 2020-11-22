@@ -2,11 +2,19 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div style = {{ position: '-webkit-sticky', position: "sticky", top: 0, zIndex: 2 }}>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-        <Link href="/Home">
-          <a className="navbar-brand">PALMSKY</a>
-        </Link>
+    <div
+      style={{
+        position: "-webkit-sticky",
+        position: "sticky",
+        top: 0,
+        zIndex: 2,
+      }}
+    >
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="/Home">
+          PALMSKY
+        </a>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -22,22 +30,18 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <Link href="/Home">
-                <a className="nav-link" href="#">
-                  HOME <span className="sr-only">(current)</span>
-                </a>
-              </Link>
+              <a className="nav-link" href="/Home">
+                HOME <span className="sr-only">(current)</span>
+              </a>
             </li>
             <li className="nav-item">
-              <Link href="/Library">
-                <a className="nav-link" href="#">
-                  LIBRARY
-                </a>
-              </Link>
+              <a className="nav-link" href="/category/library">
+                LIBRARY
+              </a>
             </li>
           </ul>
 
-          <form className="form-inline my-2 my-lg-0">
+          <form className="form-inline">
             <div className="search-box">
               <input
                 className="search-txt form-control"
@@ -51,14 +55,14 @@ const Navbar = () => {
           </form>
 
           <div className="nav-item">
-            <a className="cart-btn" href="#">
-              <i className="fas fa-shopping-cart"></i>
+            <a className="cart-btn" href="/Cart">
+              <i class="fas fa-shopping-cart"></i>
             </a>
           </div>
 
           <div className="nav-item">
             <a
-              className="nav-link dropdown-toggle"
+              className="nav-link dropdown-toggle profile-btn"
               href="#"
               id="navbarDropdown"
               data-toggle="dropdown"
@@ -83,6 +87,16 @@ const Navbar = () => {
                 Sign Out
               </a>
             </div>
+          </div>
+
+          <div className="nav-item" style={{ fontWeight: "bolder" }}>
+            <a className="nav-link" href="">LOGIN</a>
+          </div>
+
+          <div className="nav-item">
+            <button type="button" className="btn btn-outline-dark" style={{ fontWeight: "bolder" }}>
+              REGISTER
+            </button>
           </div>
         </div>
       </nav>
@@ -122,10 +136,14 @@ const Navbar = () => {
           background: white;
         }
         .cart-btn {
+          padding: 15px;
           color: #666666;
         }
         .profile {
           margin-right: 40px;
+        }
+        .profile-btn {
+          color: #666666;
         }
         .navbar-brand {
           color: #cd2424;

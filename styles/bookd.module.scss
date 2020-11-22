@@ -1,0 +1,65 @@
+.topic {
+  font-weight: bolder;
+  font-size: xx-large;
+  padding-top: 5%;
+  text-align: center;
+}
+.subTopic {
+  text-align: center;
+  color: #666666;
+  font-size: x-large;
+}
+.detailBox {
+  padding-top: 50px;
+}
+#bookDes {
+  margin: 10px 0 10px 0;
+}
+#bookDes1 {
+  width: 30%;
+  padding: 10px 0 5px 10px;
+  color: white;
+  background-color: #666666;
+}
+#bookDes2 {
+  width: 70%;
+  padding: 10px 0 5px 10px;
+  background-color: white;
+  border-color: #666666;
+  border-style: solid;
+}
+#icon {
+  font-size: 40px;
+  padding: 0px 0px 0px 5px;
+  color: #FE1818;
+}
+#icon:hover {
+  color: #AF0000;
+}
+#nBook {
+  padding-top: 10px;
+}
+#bookDesr {
+  margin: -3px 0 0 0;
+}
+#bookDes3 {
+  border-color: #707070;
+  border-style: solid;
+  width: 30%;
+  padding: 10px 0 5px 10px;
+  border-right: none;
+}
+#bookDes4 {
+  width: 70%;
+  padding: 10px 0 5px 10px;
+  border-color: #707070;
+  border-style: solid;
+  border-left: none;
+}
+.detail {
+  margin-top: 50px;
+}
+.detailTop {
+  font-weight: bolder;
+  font-size: xx-large;
+}
