@@ -67,7 +67,7 @@ const Navbar = () => {
               id="navbarDropdown"
               data-toggle="dropdown"
             >
-              <i class="fas fa-user"></i>
+              <i className="fas fa-user"></i>
             </a>
             <div
               className="dropdown-menu dropdown-menu-right"
