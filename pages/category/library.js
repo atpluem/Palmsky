@@ -44,9 +44,9 @@ const library = () => {
                         CATEGORY
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropD" style={{ backgroundColor: "#CD2424" }} >
-                        <a class="dropdown-item text-white" href="#">option 1</a>
-                        <a class="dropdown-item text-white" href="#">option 2</a>
-                        <a class="dropdown-item text-white" href="#">option 3</a>
+                        <a class="dropdown-item text-white hover-select" href="#">option 1</a>
+                        <a class="dropdown-item text-white hover-select" href="#">option 3</a>
+                        <a class="dropdown-item text-white hover-select" href="#">option 2</a>
                     </div>
                 </div>
             </div>
