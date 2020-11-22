@@ -9,7 +9,6 @@ const library = () => {
 
     return (
         <div>
-            <Header />
             <Navbar />
 
             {/* Notice */}

@@ -1,5 +1,4 @@
-import React from 'react'
-import Header from '../Header'
+import React from 'react';
 
 const tags = () => {
     const number = [1,2,3,4]

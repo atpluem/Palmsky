@@ -4,6 +4,7 @@ import Link from "next/link";
 import Nav from "../components/Nav";
 import Slider from "../components/Slider"
 import HomeCat from "../components/HomeCat";
+import Footer from "../components/Footer";
 // Style
 import styles from "../styles/home.module.scss";
 
@@ -15,6 +16,7 @@ export default function Home() {
         <Slider />
         <HomeCat />
         <HomeCat />
+        <Footer />
       </main>
     </div>
   );
