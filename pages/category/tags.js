@@ -9,7 +9,7 @@ const tags = () => {
                 <p className = "pr-2 h5">Category</p>
                 <hr style = {{ borderTop: '1px solid black', width: '100%' }} />
             </div>
-            <div className = "d-flex flex-row scroll-slide" >
+            <div className = "d-flex flex-row scroll-slide smooth-scroll" >
                 {number.map(count => ( 
                     <div className = "mt-3 mr-4">
                         <div className = "card shadow-sm" style = {{ width: '18rem'}}>
