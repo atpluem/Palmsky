@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
-=======
 import React from 'react'
->>>>>>> 3fc01c035f21ef513990f889866ff26538bb8d66
 
 const tags = ({ datas }) => {
     

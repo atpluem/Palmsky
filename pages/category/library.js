@@ -10,7 +10,6 @@ const library = () => {
         .then(data => setbook(data) )
     ])
 
-
     return (
         <div>
             <Navbar />
