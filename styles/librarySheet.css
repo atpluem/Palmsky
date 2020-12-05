@@ -1,5 +1,5 @@
 .scroll-slide {
-    overflow: auto;
+    overflow-y: scroll;
 }
 
 .scroll-slide::-webkit-scrollbar {
@@ -7,7 +7,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -15,12 +15,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #f0847d;
     border-radius: 10px ;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #c96f69;
 }
 
 .cat-btn {
@@ -47,9 +47,16 @@
 } 
 
 .zoom:hover {
-    transform: scale(1.5); 
+    transform: scale(1.02); 
 }
 
 .hover-select:hover {
     background-color: #AF0000;
+}
+
+.advancer {
+    appearance: none;
+    background: transparent;
+    padding: 0;
+    border: 0;
 }
