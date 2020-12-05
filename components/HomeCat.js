@@ -12,12 +12,13 @@ export default function HomeCat() {
     { width: 1200, itemsToShow: 4 },
   ];
 
-  // Get book data
+  // Fetch book data
   const [books, setBooks] = useState([
     fetch("https://shielded-caverns-34585.herokuapp.com/api/book/")
       .then((res) => res.json())
       .then((data) => setBooks(data)),
   ]);
+
 
   return (
     <div>
