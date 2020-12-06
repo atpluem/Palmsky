@@ -27,7 +27,7 @@ export default function Cart() {
                       alt=""
                     />
                   </div>
-                  <div className="col">sada</div>
+                  <div className="col">sa</div>
                 </div>
               </div>
             </div>
