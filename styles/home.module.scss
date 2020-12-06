@@ -9,12 +9,20 @@
     margin: 0 2px;
     transition: transform 300ms ease 100ms;
 }
+
 .item:hover {
-    transform: scale(1.25) !important;
+    transform: scale(1.2) !important;
 }
 .catName {
     padding-top: 20px;
     padding-left: 5%;
     font-weight: bolder;
     font-size: xx-large;
+}
+.top {
+    color: black;
+}
+.price {
+    color: black;
+    font-weight: bolder;
 }
