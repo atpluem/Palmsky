@@ -1,25 +1,35 @@
-import Header from '../../components/Header';
 import Nav from "../../components/Nav";
 
 export default function choosePayment() {
     //javascript
     var countpage = 0;
+
     var nextclick = function () {
-        if (countpage != 2)
+
+        if (countpage != 2 && ($('#creditcard').is(':checked') || $('#promptpay').is(':checked')))
             countpage = countpage + 1;
 
         if (countpage > 0) {
             $('#cancelbutton').hide();
             $('#backbutton').show();
         }
-        if (countpage == 1) {
+
+        if ($('#creditcard').is(':checked') && countpage == 1) {
             $('#choosepaymenttext').hide();
             $('#successpayment').hide();
             $('#paymentoption').hide();
-
             $('#creditcardtext').show();
             $('#creditform').show();
         }
+
+        if ($('#promptpay').is(':checked') && countpage == 1) {
+            $('#choosepaymenttext').hide();
+            $('#successpayment').hide();
+            $('#paymentoption').hide();
+            $('#promptpayQRCODE').show();
+            $('#next').prop('disabled', true);
+        }
+
         if (countpage == 2) {
             $('#choosepaymenttext').hide();
             $('#creditcardtext').hide();
@@ -27,41 +37,58 @@ export default function choosePayment() {
             $('#creditform').hide();
             $('#next').hide();
             $('#backbutton').hide();
+            $('#promptpayQRCODE').hide();
 
             $('#continuousbutton').show();
             $('#successpayment').show();
         }
-
-
     }
     var backclick = function () {
         console.log("backclick");
         countpage = countpage - 1;
 
         if (countpage == 0) {
+            $('#next').prop('disabled', false);
             $('#backbutton').hide();
             $('#creditcardtext').hide();
             $('#creditform').hide();
+            $('#promptpayQRCODE').hide();
 
             $('#choosepaymenttext').show();
             $('#cancelbutton').show();
             $('#paymentoption').show();
 
         }
-        if (countpage == 1) {
+        if ($('#creditcard').is(':checked') && countpage == 1) {
             $('#continuousbutton').hide();
+            $('#successpayment').hide();
+
             $('#next').show();
             $('#backbutton').show();
-
-            $('#successpayment').hide();
             $('#creditcardtext').show();
             $('#creditform  ').show();
         }
+        if ($('#promptpay').is(':checked') && countpage == 1) {
+            $('#continuousbutton').hide();
+            $('#successpayment').hide();
+
+            $('#next').show();
+            $('#backbutton').show();
+            $('#promptpayQRCODE').show();
+        }
+    }
+
+    var switchOption1 = function () {
+        $('#creditcard').prop('checked', false);
+        //
+    }
+    var switchOption2 = function () {
+        $('#promptpay').prop('checked', false);
+        //
     }
     //html
     return <div>
         <div>
-            <Header />
             <Nav />
             <br></br>
             <div className="container" >
@@ -71,14 +98,14 @@ export default function choosePayment() {
                             <div className="row">
                                 <div className="col ">
                                     Stepper progress bar
-                            </div>
+                                </div>
                             </div>
                             {/* Header  */}
                             <div className="row justify-content-center" >
-                                <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: 22 }} id="choosepaymenttext">
+                                <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: "2.5vh" }} id="choosepaymenttext">
                                     Choose payment method
                                 </div>
-                                <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: 22, display: "none" }} id="creditcardtext">
+                                <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: "2.5vh", display: "none" }} id="creditcardtext">
                                     Enter your credit or debit card
                                 </div>
                             </div>
@@ -86,7 +113,7 @@ export default function choosePayment() {
                             {/* Credit or Debit card  */}
                             <div className="row justify-content-center " style={{ paddingBottom: 10 }} id="paymentoption">
                                 <div className="col-centered " style={{ paddingBottom: 10 }}>
-                                    <label htmlFor="creditcard" className="card shadow " style={{ width: '20rem' }} id="credit_card">
+                                    <label htmlFor="creditcard" className="card shadow " style={{ width: '20rem' }} id="credit_card" onClick={switchOption2}>
                                         <div className="card-body text-center">
                                             <div className="round">
                                                 <input type="checkbox" id="creditcard" name="creditcard" value="1" />
@@ -101,7 +128,7 @@ export default function choosePayment() {
 
                                 {/* promptpay  */}
                                 <div className="col-centered offset-md-1" >
-                                    <label className="card shadow" style={{ width: '20rem' }} id="promtpay_card" htmlFor="promptpay">
+                                    <label className="card shadow" style={{ width: '20rem' }} id="promtpay_card" htmlFor="promptpay" onClick={switchOption1}>
                                         <div className="card-body text-center" >
                                             <div className="round">
                                                 <input type="checkbox" id="promptpay" name="promptpay" value="2" />
@@ -151,6 +178,45 @@ export default function choosePayment() {
                                     </form>
                                 </div>
                             </div>
+
+                            {/* promtpay QRCODE  */}
+                            <div className="row justify-content-center" style={{ paddingBottom: 10, display: "none" }} id="promptpayQRCODE">
+                                <div className="col-centered " style={{ paddingBottom: 10 }}>
+                                    <div className="card shadow" style={{ width: '20rem', borderWidth: "5px ", borderColor: "#AF0000", backgroundColor: "#AF0000" }}>
+                                        <div className="font-weight-bold" style={{ padding: "20px", textAlign: "center", color: "white", fontSize: 22, height: "80px" }} >
+                                            Scan QR Code Here
+                                        </div>
+                                        <div className="card-body text-center" style={{ backgroundColor: "White" }}>
+                                            <img src="/images/promptpayQRCode.png" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-centered offset-1 " style={{ margin: "auto" }} >
+                                    <form style={{ textAlign: "center" }}>
+                                        <div className="form-group" >
+                                            <label className="font-weight-bold" style={{ fontSize: "4.8vh" }}>TIME REMAINING</label>
+                                        </div>
+                                        <div className="form-group" >
+                                            <label className="font-weight-bold" style={{ fontSize: "3.5vh", color: "red" }}>5 Minutes 50 Seconds</label>
+                                        </div>
+                                        <div className="form-group" style={{ padding: "2px" }}>
+                                            <div className="card shadow " style={{ width: '40.0vh', borderWidth: "2px ", borderColor: "purple" }}>
+                                                <div className="row ">
+                                                    <div className="col-3 col-sm-3 " >
+                                                        <img src="/images/scb-icon.png" alt="" style={{ width: "10.0vh", padding: "10px" }} />
+                                                    </div>
+                                                    <div className="col">
+                                                        <label className="font-weight-bold" style={{ fontSize: "2.5vh" }}>ID : 10610705010021</label>
+                                                        <label className="font-weight-bold" style={{ fontSize: "2.5vh" }}>NAME : PALMSKY</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            {/* success */}
                             <div className="row justify-content-center" style={{ paddingBottom: 10, display: "none" }} id="successpayment">
                                 <form>
                                     <div className="form-group row justify-content-center" >
@@ -174,19 +240,16 @@ export default function choosePayment() {
                                     <button onClick={backclick} type="button " className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%", display: "none" }} id="backbutton">
                                         Back
                                     </button>
-
-
                                 </div>
 
                                 <div className="col-md-4 " style={{ width: "50%" }}>
-                                    <a onClick={nextclick} className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%" }} id="next">
+                                    <button onClick={nextclick} type="button" className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%" }} id="next" >
                                         Next
-                                    </a>
+                                    </button>
                                 </div>
                                 <button onClick={backclick} type="button " className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%", maxWidth: "400px", display: "none" }} id="continuousbutton">
                                     Continuous
                                     </button>
-
                             </div>
                         </div>
 
