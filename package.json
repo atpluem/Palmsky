@@ -23,7 +23,8 @@
     "react-dom": "^16.14.0",
     "react-elastic-carousel": "^0.9.5",
     "sass": "^1.29.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "use-http": "^1.0.15"
   },
   "engines": {
     "node": "12.16.1",

@@ -10,7 +10,7 @@ const Navbar = () => {
         zIndex: 2,
       }}
     >
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <a className="navbar-brand" href="/Home">
           PALMSKY
         </a>

@@ -1,22 +1,34 @@
-import React from 'react'
+import { useEffect, useState} from 'react'
 
 const tags = ({ datas }) => {
+    const [tagBook, setTag] = useState([])
     
+    useEffect(() => {
+        const fetchdata = async() => {
+            const response = await fetch('https://shielded-caverns-34585.herokuapp.com/api/book/tag/?q=' + datas)
+            const data = await response.json()
+            setTag(data)
+        }
+        fetchdata()
+
+    }, [])
+
+
     return (
         <div className = "mt-5 mb-5" >
             <div className = "d-flex flex-row">
-                <p className = "pr-2 h5">Category</p>
-                <hr style = {{ borderTop: '1px solid black', width: '100%' }} />
+                <p className = "pr-2 h5 ">{datas}</p>
+                <hr style={{ width:'100%', borderTop: "1px solid black" }} />
             </div>
             <div className = "d-flex flex-row scroll-slide smooth-scroll" >
-                {datas.map(count => ( 
-                    <div className = "mt-3 mr-3">
+                {tagBook.map((item,key) => (
+                    <div className = "mt-3 mr-3" key={key}>
                         <div className = "card shadow-sm" style = {{ width: '18rem' }}>
                             <div className="bg-image">
-                                <img className = "card-image-top img-fluid zoom " style={{ height: "27rem" }} src = {count.cover_Image} alt = "Card" />
+                                <img className = "card-image-top img-fluid zoom " style={{ height: "27rem" }} src = {item.cover_Image} alt = "Card" />
                             </div>
                             <div className = "card-body">
-                                <p className = "card-text" style={{ textOverflow: "ellipsis" }}> {count.title} </p>
+                                <p className = "card-text" style={{ textOverflow: "ellipsis" }}> {item.title} </p>
                             </div>
                         </div>
                     </div>
@@ -24,6 +36,7 @@ const tags = ({ datas }) => {
             </div>
         </div>
     )
+
 }
 
 export default tags
