@@ -56,7 +56,7 @@ const Navbar = () => {
 
           <div className="nav-item">
             <a className="cart-btn" href="/Cart">
-              <i class="fas fa-shopping-cart"></i>
+              <i className="fas fa-shopping-cart"></i>
             </a>
           </div>
 

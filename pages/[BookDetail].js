@@ -1,24 +1,26 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
+import React, { useState, useEffect } from "react"
+import { useRouter } from "next/router"
+import Nav from "../components/Nav"
+import Footer from "../components/Footer"
 
-import styles from "../styles/bookd.module.scss";
+import styles from "../styles/bookd.module.scss"
 
 export default function BookDetail() {
-  const [count, setCount] = useState(Number);
-  const router = useRouter();
-  const url =
-    "https://shielded-caverns-34585.herokuapp.com/api/book/" +
-    router.query.BookDetail +
-    "/";
+  const [count, setCount] = useState(Number)
+  const [book, setBook] = useState([])
+  const router = useRouter()
+  const url = "https://shielded-caverns-34585.herokuapp.com/api/book"
 
-  // Get book data
-  const [book, setBook] = useState(
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setBook(data))
-  );
+  useEffect(() => {
+    if(router.asPath !== router.route){
+      const fetchData = async () => {
+        const response = await fetch(`${url}/${router.query.BookDetail}/`)
+        const data = await response.json()
+        setBook(data)
+      };
+      fetchData()
+    }
+  }, [router])
 
   return (
     <div>
@@ -58,7 +60,7 @@ export default function BookDetail() {
                     }}
                     id={styles.icon}
                   >
-                    <i class="fas fa-minus-square"></i>
+                    <i className="fas fa-minus-square"></i>
                   </a>
                   <span className="col-centered col-2" id={styles.nBook}>
                     <input
@@ -109,11 +111,11 @@ export default function BookDetail() {
 
           <div className={styles.detail}>
             <span className={styles.detailTop}>Detail</span>
-            <div >{book.desription}</div>
+            <div>{book.desription}</div>
           </div>
         </div>
       </div>
       <Footer />
     </div>
-  );
+  )
 }
