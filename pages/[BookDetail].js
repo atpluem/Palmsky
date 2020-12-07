@@ -80,12 +80,13 @@ export default function BookDetail() {
                 </div>
 
                 <button
+                style={{marginBottom: '20px'}}
                   type="button"
                   className="btn btn-danger btn-lg btn-block"
                 >
                   Add to Cart
                 </button>
-                <br />
+                
               </form>
 
               <div className="row" id={styles.bookDesr}>
