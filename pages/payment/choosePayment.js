@@ -3,7 +3,13 @@ import Nav from "../../components/Nav";
 export default function choosePayment() {
     //javascript
     var countpage = 0;
-
+    var validate = function () {
+        if ($('#cardholder').val() == "" || $('#bill').val() == "" || $('#cardNumber').val() == "" || $('#exp').val() == "" || $('#cvv').val() == "") {
+            $('#next').prop('disabled', true)
+        } else {
+            $('#next').prop('disabled', false)
+        }
+    }
     var nextclick = function () {
 
         if (countpage != 2 && ($('#creditcard').is(':checked') || $('#promptpay').is(':checked')))
@@ -20,6 +26,14 @@ export default function choosePayment() {
             $('#paymentoption').hide();
             $('#creditcardtext').show();
             $('#creditform').show();
+            $('#step2').addClass('active');
+
+            if ($('#cardholder').val() == "" || $('#bill').val() == "" || $('#cardNumber').val() == "" || $('#exp').val() == "" || $('#cvv').val() == "") {
+                $('#next').prop('disabled', true)
+            } else {
+                $('#next').prop('disabled', false)
+            }
+
         }
 
         if ($('#promptpay').is(':checked') && countpage == 1) {
@@ -28,6 +42,9 @@ export default function choosePayment() {
             $('#paymentoption').hide();
             $('#promptpayQRCODE').show();
             $('#next').prop('disabled', true);
+
+            $('#step2').addClass('active');
+            $('#step3').addClass('active');
         }
 
         if (countpage == 2) {
@@ -38,9 +55,22 @@ export default function choosePayment() {
             $('#next').hide();
             $('#backbutton').hide();
             $('#promptpayQRCODE').hide();
-
             $('#continuousbutton').show();
             $('#successpayment').show();
+            $('#step3').addClass('active');
+            var savepayment = ""
+            if ($('#savepayment').is(":checked")) {
+                savepayment = 1;
+            }
+            var data = {
+                cardholder: $('#cardholder').val(),
+                bill: $('#bill').val(),
+                cardNumber: $('#cardNumber').val(),
+                exp: $('#exp').val(),
+                cvv: $('#cvv').val(),
+                savepayment: savepayment
+            }
+            console.log(data)
         }
     }
     var backclick = function () {
@@ -53,20 +83,23 @@ export default function choosePayment() {
             $('#creditcardtext').hide();
             $('#creditform').hide();
             $('#promptpayQRCODE').hide();
-
             $('#choosepaymenttext').show();
             $('#cancelbutton').show();
             $('#paymentoption').show();
+
+            $('#step2').removeClass('active');
+            $('#step3').removeClass('active');
 
         }
         if ($('#creditcard').is(':checked') && countpage == 1) {
             $('#continuousbutton').hide();
             $('#successpayment').hide();
-
             $('#next').show();
             $('#backbutton').show();
             $('#creditcardtext').show();
             $('#creditform  ').show();
+
+            $('#step3').removeAttr('active');
         }
         if ($('#promptpay').is(':checked') && countpage == 1) {
             $('#continuousbutton').hide();
@@ -95,31 +128,33 @@ export default function choosePayment() {
                 <div id="stepwizard">
                     <div className="parent-div d-flex justify-content-center   " style={{ width: "100%", height: "90vh" }}>
                         <div style={{ width: "80%" }}>
-                            <div className="row">
-                                <div className="col ">
-                                    Stepper progress bar
+                            <div className="row justify-content-center">
+                                <div className="progressbar row justify-content-center" style={{ width: "500px", listStyleType: "none" }}>
+                                    <li className="active" id="step1"></li>
+                                    <li id="step2"></li>
+                                    <li id="step3"></li>
                                 </div>
                             </div>
                             {/* Header  */}
                             <div className="row justify-content-center" >
-                                <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: "2.5vh" }} id="choosepaymenttext">
+                                <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: "3.5vh" }} id="choosepaymenttext">
                                     Choose payment method
                                 </div>
-                                <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: "2.5vh", display: "none" }} id="creditcardtext">
-                                    Enter your credit or debit card
+                                <div className=" font-weight-bold" style={{ marginBottom: 10, fontSize: "3.5vh", display: "none" }} id="creditcardtext">
+                                    Enter your credit card
                                 </div>
                             </div>
 
                             {/* Credit or Debit card  */}
                             <div className="row justify-content-center " style={{ paddingBottom: 10 }} id="paymentoption">
                                 <div className="col-centered " style={{ paddingBottom: 10 }}>
-                                    <label htmlFor="creditcard" className="card shadow " style={{ width: '20rem' }} id="credit_card" onClick={switchOption2}>
+                                    <label htmlFor="creditcard" className="card shadow " style={{ width: '20rem', height: '250px' }} id="credit_card" onClick={switchOption2}>
                                         <div className="card-body text-center">
-                                            <div className="round">
+                                            <div className="round" style={{ float: "right", paddingRight: "10px" }}>
                                                 <input type="checkbox" id="creditcard" name="creditcard" value="1" />
                                                 <label htmlFor="creditcard" />
                                             </div>
-                                            <img src="/images/visa.png" alt="" height={100} />
+                                            <img src="/images/visa.png" alt="" style={{ height: "100px", marginTop: "15px" }} />
                                             <br />
                                             <label className="font-weight-bold" style={{ fontSize: 18 }}> Credit or Debit card</label>
                                         </div>
@@ -128,13 +163,13 @@ export default function choosePayment() {
 
                                 {/* promptpay  */}
                                 <div className="col-centered offset-md-1" >
-                                    <label className="card shadow" style={{ width: '20rem' }} id="promtpay_card" htmlFor="promptpay" onClick={switchOption1}>
+                                    <label className="card shadow" style={{ width: '20rem', height: '250px' }} id="promtpay_card" htmlFor="promptpay" onClick={switchOption1}>
                                         <div className="card-body text-center" >
-                                            <div className="round">
+                                            <div className="round" style={{ float: "right", paddingRight: "10px" }}>
                                                 <input type="checkbox" id="promptpay" name="promptpay" value="2" />
                                                 <label htmlFor="promptpay" />
                                             </div>
-                                            <img className="" src="/images/promptPay.png" alt="" height={100} />
+                                            <img className="" src="/images/promptPay.png" alt="" style={{ height: "100px", marginTop: "15px" }} />
                                             <br />
                                             <label className="font-weight-bold" style={{ fontSize: 18 }}> PromptPay</label>
                                         </div>
@@ -151,27 +186,24 @@ export default function choosePayment() {
                                         </div>
                                         <div className="form-group row justify-content-center" >
 
-                                            <input className="form-control" placeholder="Card Holder Name" style={{ fontSize: 24, maxWidth: "500px" }} />
+                                            <input onChange={validate} id="cardholder" className="form-control" placeholder="Card Holder Name" style={{ fontSize: 24, maxWidth: "500px" }} />
                                         </div>
-                                        <div className="form-group row justify-content-center" >
 
-                                            <input className="form-control" placeholder="Card Holder Name" style={{ fontSize: 24, maxWidth: "500px" }} />
-                                        </div>
                                         <div className="form-group row justify-content-center" >
-                                            <input className="form-control" placeholder="Billing Zip Code" style={{ fontSize: 24, maxWidth: "500px" }} />
+                                            <input onChange={validate} id="bill" className="form-control" placeholder="Billing Zip Code" style={{ fontSize: 24, maxWidth: "500px" }} />
                                         </div>
                                         <div className="form-group row justify-content-center">
-                                            <input className="form-control" placeholder="Card Number" style={{ fontSize: 24, maxWidth: "500px" }} />
+                                            <input onChange={validate} id="cardNumber" className="form-control" placeholder="Card Number" style={{ fontSize: 24, maxWidth: "500px" }} />
                                         </div>
                                         <div className="form-group row justify-content-center" >
-                                            <input className="form-control" placeholder="Expiration Date (MM/YY)" style={{ fontSize: 24, maxWidth: "500px" }} />
+                                            <input onChange={validate} id="exp" className="form-control" placeholder="Expiration Date (MM/YY)" style={{ fontSize: 24, maxWidth: "500px" }} />
                                         </div>
                                         <div className="form-group row justify-content-center" >
-                                            <input className="form-control" placeholder="Security Code (CVV)" style={{ fontSize: 24, maxWidth: "500px" }} />
+                                            <input onChange={validate} id="cvv" className="form-control" placeholder="Security Code (CVV)" style={{ fontSize: 24, maxWidth: "500px" }} />
                                         </div>
                                         <div className="form-group row " >
                                             <div>
-                                                <input type="checkbox" id="savepayment" name="savepayment" value="1" style={{ width: "15px", height: "15px", marginRight: "10px", cursor: "pointer" }} />
+                                                <input type="checkbox" id="savepayment" name="savepayment" style={{ width: "15px", height: "15px", marginRight: "10px", cursor: "pointer" }} />
                                                 <label htmlFor="savepayment" style={{ fontSize: 18, cursor: "pointer" }}>Save payment information</label>
                                             </div>
                                         </div>
@@ -220,7 +252,7 @@ export default function choosePayment() {
                             <div className="row justify-content-center" style={{ paddingBottom: 10, display: "none" }} id="successpayment">
                                 <form>
                                     <div className="form-group row justify-content-center" >
-                                        <img src="/images/successpayment.png" alt="" style={{ width: "85%" }} />
+                                        <img src="/images/successpayment.png" alt="" style={{ maxWidth: "250px" }} />
                                     </div>
                                     <div className="form-group row justify-content-center" >
                                         <label className="font-weight-bold" style={{ fontSize: 48, cursor: "pointer" }}>SUCCESS</label>
@@ -271,28 +303,28 @@ export default function choosePayment() {
 
             .round label {
             background-color: #fff;
-            border: 1px solid #CD2424;
+            border: 2px solid #CD2424;
             border-radius: 50%;
             cursor: pointer;
-            height: 28px;
+            height: 35px;
             left: 0;
             position: absolute;
             top: 0;
-            width: 28px;
+            width: 35px;
             }
 
             .round label:after {
-            border: 3px solid #CD2424;
+            border: 4.5px solid #CD2424;
             border-top: none;
             border-right: none;
             content: "";
-            height: 6px;
+            height: 10px;
             left: 7px;
             opacity: 0;
             position: absolute;
             top: 8px;
             transform: rotate(-45deg);
-            width: 12px;
+            width: 16px;
             }
 
             .round input[type="checkbox"] {
@@ -313,6 +345,51 @@ export default function choosePayment() {
                 text-align: center;
              }
              
+
+             .progressbar li{
+                float: left;
+                width: 33.33%;
+                text-align: center;
+                position:relative;
+              }
+              .progressbar{
+                counter-reset: step;
+              }
+              .progressbar li:before{
+                content:counter(step);
+                counter-increment: step;
+                  border-radius: 50%;
+                  width: 40px;
+                  height: 40px;
+                  display: block;
+                  background: #D3D3D3;
+                  margin: 40px auto 40px auto;
+                  color:white;
+                  text-align: center;
+                  font-weight: bold;
+                  line-height: 40px;
+                  font-size:18px
+              }
+              .progressbar li:after{
+               
+                width: 100%;
+                height: 3px;
+                content: '';
+                position: absolute;
+                background-color: #D3D3D3;
+                top: 58px;
+                left: -50%;
+                z-index: -1;
+              }
+              .progressbar li:first-child:after{
+                content: none;
+            }
+            .progressbar li.active:before {
+                background-color: #CD2424;
+            }
+            .progressbar li.active + li:after {
+                background-color: #CD2424;
+            }
            `}
         </style>
 
