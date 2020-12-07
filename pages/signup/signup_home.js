@@ -56,32 +56,41 @@ export default function singup_home() {
                 $('#backbutton').hide();
                 $('#category').hide();
                 //prep data
-                var birth = "";
-                var notification = ""
+                var birth = null;
+                var notification = false;
                 if ($('#notify').is(':checked')) {
-                    notification = 1;
+                    notification = true;
                 }
                 if ($("#day option:selected").val() != "" && $("#month option:selected").val() != "" && $("#year option:selected").val() != "") {
-                    birth = $("#day option:selected").val() + "-" + $("#month option:selected").val() + "-" + $("#year option:selected").val()
+                    birth = $("#year option:selected").val() + "-" + $("#month option:selected").val() + "-" +  $("#day option:selected").val()  
                 }
 
                 var data =
                 {
                     email: $('#email').val(),
                     password: $('#password').val(),
-                    picture: $('#image').val(),
-                    name: $('#name').val(),
-                    lastname: $('#lastname').val(),
-                    phoneNo: $('#phoneNo').val(),
-                    dob: birth,
+                    firstName: $('#name').val(),
+                    lastName: $('#lastname').val(),
+                    phone: $('#phoneNo').val(),
+                    dateOfBirth: birth,
                     gender: $("#gender option:selected").val(),
-                    address: $('#address').val(),
+                    addressName: $('#address').val(),
+                    street: "",
+                    subDistrict: "",
                     province: $('#province').val(),
+                    district: $('#district').val(),
                     zipcode: $('#zipcode').val(),
-                    notify: notification,
+                    mailingAllow: notification,
                 }
+                //JSON.stringify(data)
+                console.log(JSON.stringify(data));
 
-                console.log(data)
+                const requestOptions = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                };
+                fetch('https://shielded-caverns-34585.herokuapp.com/api/account/', requestOptions)
 
 
             }
@@ -164,18 +173,22 @@ export default function singup_home() {
                             <Success />
                         </div>
                         <div className="row justify-content-center ">
-                            <form className="row" style={{ width: "400px" }}>
-                                <button type="button" className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%", display: "none" }} id="continuous" >
-                                    Continuous
+                            <form className="row" style={{ maxWidth: "400px", width: "100%" }}>
+                                <a href="../../login" style={{ width: "100%" }}>
+                                    <button type="button" className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%", display: "none" }} id="continuous" >
+                                        Continuous
                                 </button>
+                                </a>
                             </form>
                         </div>
                         <div className="row justify-content-center ">
                             <form className="row" style={{ width: "400px" }}>
                                 <div className="col " >
-                                    <button type="button" className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%" }} id="cancelbutton">
-                                        Cancel
+                                    <a href="../../login">
+                                        <button type="button" className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%" }} id="cancelbutton">
+                                            Cancel
                                     </button>
+                                    </a>
                                     <button onClick={backclick} type="button" className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%", display: "none" }} id="backbutton">
                                         Back
                                     </button>

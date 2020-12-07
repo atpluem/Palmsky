@@ -66,15 +66,15 @@ const profile = () => {
                         <div className="col">
                             <select id="day" className="btn dropdown-toggle" placeholder="Day" style={{ opacity: "70%", borderColor: "#ccc", width: "100%" }} onChange={dob}>
                                 <option value="" hidden>Day</option>
-                                <option className="dropdown-item">1</option>
-                                <option className="dropdown-item">2</option>
-                                <option className="dropdown-item">3</option>
-                                <option className="dropdown-item">4</option>
-                                <option className="dropdown-item">5</option>
-                                <option className="dropdown-item">6</option>
-                                <option className="dropdown-item">7</option>
-                                <option className="dropdown-item">8</option>
-                                <option className="dropdown-item">9</option>
+                                <option value = "01"className="dropdown-item">1</option>
+                                <option value = "02" className="dropdown-item">2</option>
+                                <option value = "03" className="dropdown-item">3</option>
+                                <option value = "04" className="dropdown-item">4</option>
+                                <option value = "05" className="dropdown-item">5</option>
+                                <option value = "06" className="dropdown-item">6</option>
+                                <option value = "07" className="dropdown-item">7</option>
+                                <option value = "08" className="dropdown-item">8</option>
+                                <option value = "09" className="dropdown-item">9</option>
                                 <option className="dropdown-item">10</option>
                                 <option className="dropdown-item">11</option>
                                 <option className="dropdown-item">12</option>
@@ -104,15 +104,15 @@ const profile = () => {
                         <div className="col">
                             <select id="month" className="btn dropdown-toggle" style={{ opacity: "70%", borderColor: "#ccc", width: "100%" }} >
                                 <option value="" hidden>Month</option>
-                                <option value="1" className="dropdown-item">Januray</option>
-                                <option value="2" className="dropdown-item">February</option>
-                                <option value="3" className="dropdown-item">March</option>
-                                <option value="4" className="dropdown-item">April</option>
-                                <option value="5" className="dropdown-item">May</option>
-                                <option value="6" className="dropdown-item">June</option>
-                                <option value="7" className="dropdown-item">July</option>
-                                <option value="8" className="dropdown-item">August</option>
-                                <option value="9" className="dropdown-item">September</option>
+                                <option value="01" className="dropdown-item">Januray</option>
+                                <option value="02" className="dropdown-item">February</option>
+                                <option value="03" className="dropdown-item">March</option>
+                                <option value="04" className="dropdown-item">April</option>
+                                <option value="05" className="dropdown-item">May</option>
+                                <option value="06" className="dropdown-item">June</option>
+                                <option value="07" className="dropdown-item">July</option>
+                                <option value="08" className="dropdown-item">August</option>
+                                <option value="09" className="dropdown-item">September</option>
                                 <option value="10" className="dropdown-item">October</option>
                                 <option value="11" className="dropdown-item">November</option>
                                 <option value="12" className="dropdown-item">December</option>
@@ -187,7 +187,6 @@ const profile = () => {
                         <option value="" hidden>Gender</option>
                         <option className="dropdown-item">Male</option>
                         <option className="dropdown-item">Female</option>
-                        <option className="dropdown-item">Unspecified </option>
                     </select>
                 </div>
                 <div className="form-group">

@@ -263,12 +263,20 @@ export default function choosePayment() {
                                 </form>
                             </div>
 
-
+                            <div className="row justify-content-center ">
+                                <a href="../../Home" className="row justify-content-center " style={{ width: "100%" }}>
+                                    <button type="button " className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%", maxWidth: "400px",display:"none" }} id="continuousbutton">
+                                        Continuous
+                                    </button>
+                                </a>
+                            </div>
                             <div className="row justify-content-center ">
                                 <div className="col-md-3 " style={{ width: "50%" }}>
-                                    <button type="button" className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%" }} id="cancelbutton">
-                                        Cancel
+                                    <a href="../../Cart">
+                                        <button type="button" className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%" }} id="cancelbutton">
+                                            Cancel
                                     </button>
+                                    </a>
                                     <button onClick={backclick} type="button " className="btn btn-outline-dark font-weight-bold" style={{ fontSize: 22, width: "100%", display: "none" }} id="backbutton">
                                         Back
                                     </button>
@@ -279,9 +287,7 @@ export default function choosePayment() {
                                         Next
                                     </button>
                                 </div>
-                                <button onClick={backclick} type="button " className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%", maxWidth: "400px", display: "none" }} id="continuousbutton">
-                                    Continuous
-                                    </button>
+
                             </div>
                         </div>
 
