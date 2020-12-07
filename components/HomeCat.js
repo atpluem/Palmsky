@@ -1,7 +1,7 @@
-import React, { useState } from "react"
-import Carousel from "react-elastic-carousel"
+import React, { useState } from "react";
+import Carousel from "react-elastic-carousel";
 
-import styles from "../styles/home.module.scss"
+import styles from "../styles/home.module.scss";
 
 export default function HomeCat() {
   // Break point for responsive
@@ -19,21 +19,23 @@ export default function HomeCat() {
       .then((data) => setBooks(data)),
   ]);
 
-
   return (
     <div>
       <div className={styles.catName}>Recommend</div>
       <div className={styles.container}>
         <Carousel breakPoints={breakPoints} itemPadding={[40, 0]}>
-          {books.map((item) => (
-            <div className={styles.item}>
-              <a href={item.pk} style={{textDecoration:"none"}}>
-                <img src={item.cover_Image} height="300" />
-                <span className={styles.top}>{item.title}</span><br/>
-                <span className={styles.price}>฿{item.price}</span>
-              </a>
-            </div>
-          ))}
+          {books.map(function (item, i) {
+            return (
+              <div className={styles.item} key={i}>
+                <a href={item.pk} style={{ textDecoration: "none" }}>
+                  <img src={item.cover_Image} height="300" />
+                  <span className={styles.top}>{item.title}</span>
+                  <br />
+                  <span className={styles.price}>฿{item.price}</span>
+                </a>
+              </div>
+            );
+          })}
         </Carousel>
       </div>
     </div>

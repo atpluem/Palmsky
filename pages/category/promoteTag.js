@@ -7,14 +7,14 @@ const promoteTag = () => {
         <div>
             <div id="slideShow" className="carousel slide" data-ride="carousel">
                 <ol className="carousel-indicators">
-                    {number.map(count => (
-                        <li data-target="#slideShow" data-slide-to={count-1} className="active"></li>
+                    {number.map((count, index) => (
+                        <li data-target="#slideShow" data-slide-to={count-1} className="active" key={index}></li>
                     ))}
                 </ol>
-                <div className="carousel-inner">
-                    {number.map(count => (
-                        <div className={count === 1 ? "carousel-item active" : "carousel-item"}>
-                            <img className="d-block w-100 " src="https://image.freepik.com/free-photo/gray-painted-background_53876-94041.jpg" alt="slide" />
+                <div className="carousel-inner shadow-sm" style={{ border: '1px solid #ededed' }}>
+                    {number.map((count, index) => (
+                        <div className={count === 1 ? "carousel-item active" : "carousel-item"} key={index}>
+                            <img className="d-block w-100 " src='/promotion1.png' alt="slide" />
                         </div>
                     ))}
                 </div>
