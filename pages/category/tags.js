@@ -11,7 +11,7 @@ const tags = ({ datas }) => {
         }
         fetchdata()
 
-    }, [])
+    }, [datas])
 
 
     return (

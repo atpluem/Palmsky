@@ -5,16 +5,33 @@ import Promote from './promoteTag'
 
 const library = () => {
     const [book, setbook] = useState([])
-
+    const [typeOfBook, setType] = useState([])
+    const [categoryString, setString] = useState("CATEGORY")
+    
     useEffect(() => {
         const fetchdata = async () => {
             const response = await fetch('https://shielded-caverns-34585.herokuapp.com/api/tag/')
             const data = await response.json()
             setbook(data)
+            setType(data)
         }
         fetchdata()
 
     }, [])
+
+    //function for filter book's category
+    const selectCategory = (parameter) => {
+        if(parameter === "all") {
+            setType(book)
+            setString("CATEGORY")
+        }
+        else {
+            setType([{
+                word: parameter
+            }])
+            setString(parameter.toUpperCase())
+        }
+    }
     
 
     return (
@@ -33,11 +50,12 @@ const library = () => {
                 <p className="h4 mt-2 mr-2 font-weight-bold">LIBRARY </p>
                 <div className="dropdown">
                     <button className="btn cat-btn dropdown-toggle" type="button" id="dropD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        CATEGORY
+                        {categoryString}
                     </button>
                     <div className="dropdown-menu" aria-labelledby="dropD" style={{ backgroundColor: "#CD2424" }} >
+                        <a className="dropdown-item text-white hover-select" onClick={() => selectCategory("all")} >All</a>
                         {book.map((option,keys) => (
-                            <a className="dropdown-item text-white hover-select" href="#" key={keys}>{option.word}</a>
+                            <a className="dropdown-item text-white hover-select" key={keys} onClick={() => selectCategory(option.word)} >{option.word}</a>
                         ))}
                     </div>
                 </div>
@@ -45,7 +63,7 @@ const library = () => {
 
             {/* Book Category */}
             <div className="container">
-                {book.map((booktags,index) => (
+                {typeOfBook.map((booktags,index) => (
                     <Tags datas={booktags.word} key={index} />
                 ))}
             </div>
