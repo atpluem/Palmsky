@@ -22,7 +22,7 @@ const tags = ({ datas }) => {
             </div>
             <div className = "d-flex flex-row scroll-slide smooth-scroll" >
                 {tagBook.map((item,key) => (
-                    <div className = "mt-3 mr-3" key={key}>
+                    <div className = "mt-3 mr-3" key={key} style={{ cursor: "pointer" }}>
                         <div className = "card shadow-sm" style = {{ width: '18rem' }}>
                             <div className="bg-image">
                                 <img className = "card-image-top img-fluid zoom " style={{ height: "27rem" }} src = {item.cover_Image} alt = "Card" />
