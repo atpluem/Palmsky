@@ -9,10 +9,33 @@ import Footer from '../../components/Footer'
 
 function userPage() {
     const [option, setoption] = useState(0)
-    
+    const [token, setToken] = useState("")
+    const [url, setUrl] = useState([{}])
+
+    useEffect(() => {
+        if (localStorage.getItem('id') != '') {
+            setToken(localStorage.getItem('id'))
+        }
+        if(token != "") {
+            const requestOptions = {
+                method: "GET",
+                headers: { "Content-Type": "application/json", "Authorization": "Token " + token }
+            }
+            const fetchdata = async () => {
+                const res = await fetch("https://shielded-caverns-34585.herokuapp.com/api/account/profile/", requestOptions)
+                const data = await res.json()
+                setUrl(data)
+            }
+            fetchdata()
+        }
+
+    }, [token])
+
 
     const changeOption = (parameter) => {
-        setoption(parameter)
+        if(url !== []) {
+            setoption(parameter)
+        }
     }
 
 
@@ -24,7 +47,7 @@ function userPage() {
 
             { option === 0 ? (<Store />) : 
             (option === 1 ? (<History />) : 
-            (<Form />))}
+            (<Form token={token} url={url[0].url} />))}
 
             <Footer />
 

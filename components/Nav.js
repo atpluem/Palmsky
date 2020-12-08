@@ -4,14 +4,15 @@ import { useRouter } from "next/router"
 
 const Navbar = () => {
   var router = useRouter()
-
+  
+  
   const onLogOut = function () {
     localStorage.setItem('id', '')
     $(loginBtn).show()
     $(registerBtn).show()
   }
-
-    useEffect(() => {
+  
+  useEffect(() => {
     if (localStorage.getItem('id') != '') {
       $(loginBtn).hide();
       $(registerBtn).hide();
