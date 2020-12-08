@@ -4,7 +4,7 @@ const bookStoreUser = () => {
     const number = [1,2,3,4,5]
     
     return (
-        <div className="container d-flex flex-wrap justify-content-center">
+        <div className="container d-flex flex-wrap justify-content-center mt-5">
             {number.map((item,index) => (
                 <div className = "mt-3 mr-3" key={index} style={{ cursor: "pointer" }}>
                     <div className = "card shadow-sm" style = {{ width: '18rem' }}>
