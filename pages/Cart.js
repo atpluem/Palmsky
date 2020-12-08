@@ -74,6 +74,118 @@ export default function Cart() {
                   </div>
                 </div>
               </div>
+
+              <div className={styles.card}>
+                <input
+                  className={styles.check}
+                  id="selectItem2"
+                  name="selectItem"
+                  type="checkbox"
+                />
+                <label htmlFor="selectItem2" className={styles.bDetail}></label>
+                <div className="row">
+                  <div className="col col-md-5">
+                    <img
+                      src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_549,h_801/https://animesiam.com/wp-content/uploads/2020/07/Kanojo-Okarishimasu-%E0%B8%AA%E0%B8%B0%E0%B8%94%E0%B8%B8%E0%B8%94%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A2%E0%B8%B1%E0%B8%A2%E0%B9%81%E0%B8%9F%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B9%88%E0%B8%B2-%E0%B8%8B%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%97%E0%B8%A2.jpg"
+                      width="150"
+                      alt=""
+                      style={{ draggable: "false" }}
+                    />
+                  </div>
+                  <div className="col">
+                    <div className={styles.cardDetail}>
+                      <div>
+                        {" "}
+                        <h5>KANOJO, OKARISHIMASU </h5>{" "}
+                      </div>
+                      <div style={{ color: "#CD2424" }}> Have 3 in stock</div>
+                      <div>
+                        <b>฿120</b>
+                      </div>
+                      <div className={styles.count}>
+                        <div className="row">
+                          <a id={styles.iconbin}>
+                            <i className="fas fa-trash"></i>
+                          </a>
+                          <a id={styles.icon}>
+                            <i className="fas fa-minus-square"></i>
+                          </a>
+                          <span
+                            className="col-centered col-5"
+                            id={styles.nBook}
+                          >
+                            <input
+                              className="form-control"
+                              type="number"
+                              min="0"
+                              step="1"
+                            />
+                          </span>
+                          <a id={styles.icon}>
+                            <i className="fas fa-plus-square"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.card}>
+                <input
+                  className={styles.check}
+                  id="selectItem3"
+                  name="selectItem"
+                  type="checkbox"
+                />
+                <label htmlFor="selectItem3" className={styles.bDetail}></label>
+                <div className="row">
+                  <div className="col col-md-5">
+                    <img
+                      src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_549,h_801/https://animesiam.com/wp-content/uploads/2020/07/Kanojo-Okarishimasu-%E0%B8%AA%E0%B8%B0%E0%B8%94%E0%B8%B8%E0%B8%94%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A2%E0%B8%B1%E0%B8%A2%E0%B9%81%E0%B8%9F%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B9%88%E0%B8%B2-%E0%B8%8B%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%97%E0%B8%A2.jpg"
+                      width="150"
+                      alt=""
+                      style={{ draggable: "false" }}
+                    />
+                  </div>
+                  <div className="col">
+                    <div className={styles.cardDetail}>
+                      <div>
+                        {" "}
+                        <h5>KANOJO, OKARISHIMASU </h5>{" "}
+                      </div>
+                      <div style={{ color: "#CD2424" }}> Have 3 in stock</div>
+                      <div>
+                        <b>฿120</b>
+                      </div>
+                      <div className={styles.count}>
+                        <div className="row">
+                          <a id={styles.iconbin}>
+                            <i className="fas fa-trash"></i>
+                          </a>
+                          <a id={styles.icon}>
+                            <i className="fas fa-minus-square"></i>
+                          </a>
+                          <span
+                            className="col-centered col-5"
+                            id={styles.nBook}
+                          >
+                            <input
+                              className="form-control"
+                              type="number"
+                              min="0"
+                              step="1"
+                            />
+                          </span>
+                          <a id={styles.icon}>
+                            <i className="fas fa-plus-square"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -142,13 +254,15 @@ export default function Cart() {
                       </div>
                     </div>
 
-                    <button
-                      type="button"
-                      style={{ margin: "20px 0 20px 0" }}
-                      className="btn btn-danger btn-lg btn-block"
-                    >
-                      <b>CHECK OUT</b>
-                    </button>
+                    <a href="/payment/choosePayment" style={{textDecoration:'none'}}>
+                      <button
+                        type="button"
+                        style={{ margin: "20px 0 20px 0" }}
+                        className="btn btn-danger btn-lg btn-block"
+                      >
+                        <b>CHECK OUT</b>
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>

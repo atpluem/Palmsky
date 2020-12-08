@@ -1,6 +1,28 @@
-import Link from "next/link";
+import Link from "next/link"
+import React, { useEffect } from "react"
+import { useRouter } from "next/router"
 
 const Navbar = () => {
+  var router = useRouter()
+
+  const onLogOut = function () {
+    localStorage.setItem('id', '')
+    $(loginBtn).show()
+    $(registerBtn).show()
+  }
+
+    useEffect(() => {
+    if (localStorage.getItem('id') != '') {
+      $(loginBtn).hide();
+      $(registerBtn).hide();
+    } else {
+      $(loginBtn).show();
+      $(registerBtn).show();
+      $(accountIcon).hide();
+      $(cartIcon).hide();
+    }
+  }, []);
+
   return (
     <div
       style={{
@@ -54,13 +76,13 @@ const Navbar = () => {
             </div>
           </form>
 
-          <div className="nav-item">
+          <div id="cartIcon" className="nav-item">
             <a className="cart-btn" href="/Cart">
               <i className="fas fa-shopping-cart"></i>
             </a>
           </div>
 
-          <div className="nav-item">
+          <div id="accountIcon" className="nav-item">
             <a
               className="nav-link dropdown-toggle profile-btn"
               href="#"
@@ -83,18 +105,28 @@ const Navbar = () => {
                 History
               </a>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" onClick={onLogOut}>
                 Sign Out
               </a>
             </div>
           </div>
 
-          <div className="nav-item" style={{ fontWeight: "bolder" }}>
-            <a className="nav-link" href="">LOGIN</a>
+          <div
+            id="loginBtn"
+            className="nav-item"
+            style={{ fontWeight: "bolder" }}
+          >
+            <a className="nav-link" href="/login">
+              LOGIN
+            </a>
           </div>
 
-          <div className="nav-item">
-            <button type="button" className="btn btn-outline-dark" style={{ fontWeight: "bolder" }}>
+          <div id="registerBtn" className="nav-item">
+            <button
+              type="button"
+              className="btn btn-outline-dark"
+              style={{ fontWeight: "bolder" }}
+            >
               REGISTER
             </button>
           </div>
