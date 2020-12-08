@@ -105,7 +105,7 @@ const Navbar = () => {
                 History
               </a>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" onClick={onLogOut}>
+              <a className="dropdown-item" onClick={onLogOut} style={{cursor:'pointer'}}>
                 Sign Out
               </a>
             </div>
