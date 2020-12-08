@@ -1,0 +1,3 @@
+.actived, .optionUser:hover {
+    filter: opacity(.6) drop-shadow(0 0 0 #ff2f00);
+}
