@@ -9,7 +9,7 @@ import Footer from '../../components/Footer'
 
 function userPage() {
     const [option, setoption] = useState(0)
-
+    
 
     const changeOption = (parameter) => {
         setoption(parameter)
