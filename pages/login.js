@@ -1,5 +1,38 @@
 import Header from '../components/Header'
 export default function choosePayment() {
+
+    var token = "";
+    var login = function () {
+
+        if ($('#email').val() != "" && $('#password').val() != "") {
+            const authentication = {
+                username: $('#email').val(),
+                password: $('#password').val(),
+            }
+            // console.log(JSON.stringify(authentication))
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(authentication)
+            };
+            fetch(`https://shielded-caverns-34585.herokuapp.com/api/login/`, requestOptions)
+                .then((response) => {
+                    if (response.ok) {
+                        $('#invalid').hide();
+                        return response.json();
+                    } else {
+                        $('#invalid').show();
+                    }
+                })
+                .then((responseJson) => {
+                    token = responseJson;
+                    console.log(token);
+                })
+        } else {
+            $('#invalid').show();
+        }
+
+    }
     return <div>
         <div>
             <Header />
@@ -23,15 +56,17 @@ export default function choosePayment() {
                                 <div className="card shadow" style={{ width: '26rem' }}>
                                     <div className="card-body">
                                         <div className="form-group">
-                                            <label className="font-weight-bold">USERNAME</label>
-                                            <input className="form-control" style={{ fontSize: 24 }} />
+                                            <label className="font-weight-bold">EMAIL</label>
+                                            <input id="email" className="form-control" style={{ fontSize: 24 }} />
                                         </div>
                                         <div className="form-group">
                                             <label className="font-weight-bold" >PASSWORD</label>
-                                            <input type="password" className="form-control" id="exampleInputPassword1" style={{ fontSize: 24 }} />
+                                            <input id="password" type="password" className="form-control" style={{ fontSize: 24 }} />
+
                                         </div>
+                                        <label id="invalid" style={{ color: "#CD2424", display: "none" }}>Please check your email or password</label>
                                         <div className="card-body text-center">
-                                            <a className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", width: "100%", fontSize: 30 }}>LOGIN</a>
+                                            <a onClick={login} className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", width: "100%", fontSize: 30 }}>LOGIN</a>
                                             <small className="form-text font-weight-bold" style={{ color: "#CD2424", fontSize: 16 }}>FORGET PASSWORD?</small>
                                         </div>
                                         <hr></hr>

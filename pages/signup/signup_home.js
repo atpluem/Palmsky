@@ -62,7 +62,7 @@ export default function singup_home() {
                     notification = true;
                 }
                 if ($("#day option:selected").val() != "" && $("#month option:selected").val() != "" && $("#year option:selected").val() != "") {
-                    birth = $("#year option:selected").val() + "-" + $("#month option:selected").val() + "-" +  $("#day option:selected").val()  
+                    birth = $("#year option:selected").val() + "-" + $("#month option:selected").val() + "-" + $("#day option:selected").val()
                 }
 
                 var data =

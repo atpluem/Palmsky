@@ -13,12 +13,13 @@ const profile = () => {
     var preview = function (e) {
 
         if (e.target.files && e.target.files[0]) {
-            console.log($('#inpimage').val())
+            
+            $('#image').val(e.target.files[0])
+            console.log($('#image').val())
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#image').attr('src', e.target.result);
-                $('#image').val(e.target.result)
-                
+                //$('#image').val(e.target.result)
             }
             reader.readAsDataURL(e.target.files[0]);
         }
@@ -66,15 +67,15 @@ const profile = () => {
                         <div className="col">
                             <select id="day" className="btn dropdown-toggle" placeholder="Day" style={{ opacity: "70%", borderColor: "#ccc", width: "100%" }} onChange={dob}>
                                 <option value="" hidden>Day</option>
-                                <option value = "01"className="dropdown-item">1</option>
-                                <option value = "02" className="dropdown-item">2</option>
-                                <option value = "03" className="dropdown-item">3</option>
-                                <option value = "04" className="dropdown-item">4</option>
-                                <option value = "05" className="dropdown-item">5</option>
-                                <option value = "06" className="dropdown-item">6</option>
-                                <option value = "07" className="dropdown-item">7</option>
-                                <option value = "08" className="dropdown-item">8</option>
-                                <option value = "09" className="dropdown-item">9</option>
+                                <option value="01" className="dropdown-item">1</option>
+                                <option value="02" className="dropdown-item">2</option>
+                                <option value="03" className="dropdown-item">3</option>
+                                <option value="04" className="dropdown-item">4</option>
+                                <option value="05" className="dropdown-item">5</option>
+                                <option value="06" className="dropdown-item">6</option>
+                                <option value="07" className="dropdown-item">7</option>
+                                <option value="08" className="dropdown-item">8</option>
+                                <option value="09" className="dropdown-item">9</option>
                                 <option className="dropdown-item">10</option>
                                 <option className="dropdown-item">11</option>
                                 <option className="dropdown-item">12</option>
