@@ -22,8 +22,6 @@ const formData = ({ token, url }) => {
 
     }, [statusData, statusAddress])
 
-    console.log(data)
-
     const changeStatus = (field) => {
         if(field === "data") {
             setStatusData(!statusData)
@@ -54,6 +52,7 @@ const formData = ({ token, url }) => {
                 gender: $("#gender").val()
             }
             setStatusData(!statusData)
+            fetchdata("PATCH" , format)
         }
         else if (type === "address") {
             format = {
@@ -65,22 +64,50 @@ const formData = ({ token, url }) => {
                 zipcode: $("#zip").val()
             }
             setStatusAddrees(!statusAddress)
+            fetchdata("PATCH" , format)
         }
         else if (type === "password") {
-            format = {
-                password: $("newPassword").val()
+            let login = {
+                username: data.email,
+                password: $("#oldPassword").val()
             }
-        }
 
-        const requestOptions = {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json", "Authorization": "Token " + token },
-            body: JSON.stringify(format)
-        }
+            format = {
+                password: $("#newPassword").val()
+            }
 
-        fetch(url, requestOptions).then(console.log("ok"))
-        
+            const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Authorization": "Token " + token },
+                body: JSON.stringify(login)
+            }
+
+            fetch(`https://shielded-caverns-34585.herokuapp.com/api/login/`, requestOptions)
+            .then(res => {
+                if(res.ok) {
+                    $("#message").hide()
+                    fetchdata("PATCH", format)
+                    document.getElementById("oldPassword").value=""
+                    document.getElementById("newPassword").value=""
+                    document.getElementById("confirmPassword").value=""
+                }
+                else {
+                    $("#message").show()
+                }
+            })
+        }        
     }
+    
+    const fetchdata = (method, dataUpdate) => {
+        const requestOptions = {
+            method: method,
+            headers: { "Content-Type": "application/json", "Authorization": "Token " + token },
+            body: JSON.stringify(dataUpdate)
+        }
+    
+        fetch(url, requestOptions)
+    }
+
 
     const loop = (start, end) => {
         count = new Array()
@@ -97,7 +124,6 @@ const formData = ({ token, url }) => {
 
 
     const check = () => {
-        $("#submitNewPassword").prop("disabled", false)
         if( $("#oldPassword").val() != "" && $("#newPassword").val() != "" && $("#confirmPassword").val() != "" && $("#newPassword").val() === $("#confirmPassword").val()) {
             $("#submitNewPassword").prop("disabled", false)
         }
@@ -292,7 +318,7 @@ const formData = ({ token, url }) => {
                         <span id="message" className="text-danger" style={{ display: "none" }}><small>Please check your password!</small></span>
                     </div>
                     <div className="d-flex flex-row-reverse">
-                        <button id="submitNewPassword" className="btn btn-primary mt-3 p-2" type="button" style={{ backgroundColor: "#CD2424", width: "30%", border: "none" }} >Confirm</button>
+                        <button id="submitNewPassword" className="btn btn-primary mt-3 p-2" type="button" style={{ backgroundColor: "#CD2424", width: "30%", border: "none" }} onClick={() => updateData("password")} disabled >Confirm</button>
                     </div>
                 </form>
             </div>
