@@ -123,13 +123,14 @@ const Navbar = () => {
           </div>
 
           <div id="registerBtn" className="nav-item">
-            <button
+            <a
               type="button"
               className="btn btn-outline-dark"
               style={{ fontWeight: "bolder" }}
+              href="/signup/signup_home"
             >
               REGISTER
-            </button>
+            </a>
           </div>
         </div>
       </nav>
