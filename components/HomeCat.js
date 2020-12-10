@@ -21,7 +21,7 @@ export default function HomeCat() {
 
   return (
     <div>
-      <div className={styles.catName}>Recommend</div>
+      <div className={styles.catName}>Rank</div>
       <div className={styles.container}>
         <Carousel breakPoints={breakPoints} itemPadding={[40, 0]}>
           {books.map(function (item, i) {

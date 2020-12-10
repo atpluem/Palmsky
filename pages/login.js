@@ -30,11 +30,8 @@ export default function choosePayment() {
         })
         .then((responseJson) => {
           token = responseJson;
-          Router.push({
-            pathname: "/Home",
-            query: { id: token['token'] },
-          });
           localStorage.setItem('id', token['token'])
+          Router.push("/Home");
         });
     } else {
       $("#invalid").show();

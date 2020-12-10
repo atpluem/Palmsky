@@ -1,18 +1,19 @@
-import Link from "next/link"
-import React, { useEffect } from "react"
-import { useRouter } from "next/router"
+import Link from "next/link";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+import Router from "next/router";
 
 const Navbar = () => {
-  var router = useRouter()
+  var router = useRouter();
 
   const onLogOut = function () {
-    localStorage.setItem('id', '')
-    $(loginBtn).show()
-    $(registerBtn).show()
-  }
+    localStorage.setItem("id", "");
+    $(loginBtn).show();
+    $(registerBtn).show();
+  };
 
-    useEffect(() => {
-    if (localStorage.getItem('id') != '') {
+  useEffect(() => {
+    if (localStorage.getItem("id") != "") {
       $(loginBtn).hide();
       $(registerBtn).hide();
     } else {
@@ -105,7 +106,12 @@ const Navbar = () => {
                 History
               </a>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" onClick={onLogOut} style={{cursor:'pointer'}}>
+              <a
+                className="dropdown-item"
+                href="/Home"
+                onClick={onLogOut}
+                style={{ cursor: "pointer" }}
+              >
                 Sign Out
               </a>
             </div>
@@ -114,21 +120,27 @@ const Navbar = () => {
           <div
             id="loginBtn"
             className="nav-item"
-            style={{ fontWeight: "bolder" }}
+            style={{ fontWeight: "bolder", display: "none" }}
           >
             <a className="nav-link" href="/login">
               LOGIN
             </a>
           </div>
 
-          <div id="registerBtn" className="nav-item">
-            <button
-              type="button"
-              className="btn btn-outline-dark"
-              style={{ fontWeight: "bolder" }}
-            >
-              REGISTER
-            </button>
+          <div
+            id="registerBtn"
+            className="nav-item"
+            style={{ display: "none" }}
+          >
+            <a href="/signup/signup_home">
+              <button
+                type="button"
+                className="btn btn-outline-dark"
+                style={{ fontWeight: "bolder" }}
+              >
+                REGISTER
+              </button>
+            </a>
           </div>
         </div>
       </nav>
