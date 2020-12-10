@@ -26,7 +26,7 @@ export default function singup_home() {
         ) {
 
             //$('#next').prop("disabled", false);
-           // validate = 1;
+            // validate = 1;
             const requestOptions = {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
@@ -140,12 +140,8 @@ export default function singup_home() {
                             $('#unsuccess').show();
                         }
                     })
-
-
             }
         }
-
-
     }
     var backclick = function () {
         countpage = countpage - 1;
@@ -232,7 +228,7 @@ export default function singup_home() {
                         </div>
                         <div className="row justify-content-center ">
                             <form className="row" style={{ maxWidth: "400px", width: "100%" }}>
-                                <a href="../../login" style={{ width: "100%" }}>
+                                <a  href="../../login" style={{ width: "100%" }}>
                                     <button type="button" className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%", display: "none" }} id="continuous" >
                                         Continuous
                                 </button>
