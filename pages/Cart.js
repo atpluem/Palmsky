@@ -8,11 +8,11 @@ import styles from "../styles/cart.module.scss";
 export default function Cart() {
   return (
     <div>
-      <Nav />
+      <Nav indexPage={1} />
       <div className="container">
         <div className="row">
           {/* SELECT */}
-          <div className="col">
+          <div className="col" style={{ height: "20%" }}>
             <div className={styles.inputGroup}>
               <input id="selectAll" name="selectAll" type="checkbox" />
               <label htmlFor="selectAll">Select All</label>
@@ -86,7 +86,7 @@ export default function Cart() {
                 <div className="row">
                   <div className="col col-md-5">
                     <img
-                      src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_549,h_801/https://animesiam.com/wp-content/uploads/2020/07/Kanojo-Okarishimasu-%E0%B8%AA%E0%B8%B0%E0%B8%94%E0%B8%B8%E0%B8%94%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A2%E0%B8%B1%E0%B8%A2%E0%B9%81%E0%B8%9F%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B9%88%E0%B8%B2-%E0%B8%8B%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%97%E0%B8%A2.jpg"
+                      src="https://shielded-caverns-34585.herokuapp.com/media/image/%E0%B8%AB%E0%B8%AD%E0%B8%87%E0%B9%81%E0%B8%AB%E0%B8%87%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A5%E0%B8%9A_OOf9CQK.jpg"
                       width="150"
                       alt=""
                       style={{ draggable: "false" }}
@@ -96,11 +96,11 @@ export default function Cart() {
                     <div className={styles.cardDetail}>
                       <div>
                         {" "}
-                        <h5>KANOJO, OKARISHIMASU </h5>{" "}
+                        <h5>แฮร์รี่ พอตเตอร์ กับห้องแห่งความลับ เล่ม 2 </h5>{" "}
                       </div>
-                      <div style={{ color: "#CD2424" }}> Have 3 in stock</div>
+                      <div style={{ color: "#CD2424" }}> Have 8 in stock</div>
                       <div>
-                        <b>฿120</b>
+                        <b>฿280.25</b>
                       </div>
                       <div className={styles.count}>
                         <div className="row">
@@ -142,7 +142,7 @@ export default function Cart() {
                 <div className="row">
                   <div className="col col-md-5">
                     <img
-                      src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_549,h_801/https://animesiam.com/wp-content/uploads/2020/07/Kanojo-Okarishimasu-%E0%B8%AA%E0%B8%B0%E0%B8%94%E0%B8%B8%E0%B8%94%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A2%E0%B8%B1%E0%B8%A2%E0%B9%81%E0%B8%9F%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B9%88%E0%B8%B2-%E0%B8%8B%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%97%E0%B8%A2.jpg"
+                      src="https://shielded-caverns-34585.herokuapp.com/media/image/51xksnD26SL._AC_UL600_SR426600__6zmECi6.jpg"
                       width="150"
                       alt=""
                       style={{ draggable: "false" }}
@@ -152,11 +152,11 @@ export default function Cart() {
                     <div className={styles.cardDetail}>
                       <div>
                         {" "}
-                        <h5>KANOJO, OKARISHIMASU </h5>{" "}
+                        <h5>5 CENTIMETERS PER SECOND </h5>{" "}
                       </div>
-                      <div style={{ color: "#CD2424" }}> Have 3 in stock</div>
+                      <div style={{ color: "#CD2424" }}> Have 2 in stock</div>
                       <div>
-                        <b>฿120</b>
+                        <b>฿161.50</b>
                       </div>
                       <div className={styles.count}>
                         <div className="row">

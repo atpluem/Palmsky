@@ -36,7 +36,7 @@ const library = () => {
 
     return (
         <div>
-            <Navbar />
+            <Navbar indexPage={2} />
 
             {/* Notice */}
             {/* After Back-End is finish, this jsx will use map function */}

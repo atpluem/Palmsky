@@ -7,6 +7,7 @@ export default function Slider() {
     name: "KANOJO, OKARISHIMASU",
     author: "Reiji Miyajima",
     Publisher: "Kodansha",
+    style: 1,
     index: 0
   },{
     img: "https://images.alphacoders.com/736/thumb-1920-736461.png",
@@ -14,13 +15,15 @@ export default function Slider() {
     name: "KIMI NO  NAWA",
     author: "Shinkai Makoto",
     Publisher: "CoMix Wave Films",
+    style: 2,
     index: 1
   },{
     img: "https://images2.alphacoders.com/110/thumb-1920-1101646.jpg",
     imgCharecter: "https://static.zerochan.net/Yuna.%28Kuma.Kuma.Kuma.Bear%29.full.2989781.png",
     name: "KUMA KUMA KUMA BEAR",
     author: "Nobuta Yuu",
-    Publisher: "EMT Squared",
+    Publisher: ", filter: 'opacity(30%)'",
+    style: 2,
     index: 2
   }
   ]
@@ -35,6 +38,7 @@ export default function Slider() {
         <ol className="carousel-indicators">
           {image.map((item,key) => (
             <li
+              key={key}
               data-target="#myCarousel"
               data-slide-to={key}
               className={item.index === 0 ? "active" : "none" }
@@ -44,20 +48,20 @@ export default function Slider() {
 
         <div className="carousel-inner">
           {image.map((item,key) => (
-            <div key={key} className={item.index === 0 ? "carousel-item active" : "carousel-item"} style={{ backgroundColor: "white"}} >
-              <div style={{ backgroundSize: "cover", overflow: "hidden", backgroundAttachment: "center", filter: "opacity(30%)" }}>
+            <div key={key} className={item.index === 0 ? "carousel-item active bg-white" : "carousel-item bg-dark"} >
+              <div style={ item.style === 1 ? { backgroundSize: "cover", overflow: "hidden", backgroundAttachment: "center", filter: "opacity(20%)" } : {  backgroundSize: "cover", overflow: "hidden", backgroundAttachment: "center", filter: "opacity(70%)" }}>
                 <img src={item.img} style={{ width: "100%" }} />
               </div>
-              <div style={{ position: "absolute", top: "10%", left:"15%", width: "400px" }}>
-                <img src={item.imgCharecter} style={{ width: "100%" }} />
-              </div>
-              <div className="container font-weight-bold" style={{ color: "black" }} >
+              <div className={ item.style === 1 ? "container font-weight-bold text-dark" : "container font-weight-bold text-ligth"}>
+                <div style={{ position: "absolute", top: "10%", left:"15%", width: "400px" }}>
+                  <img src={item.imgCharecter} style={{ width: "100%" }} />
+                </div>
                 <p className="h1">{item.name}</p>
                 <p className="h5 mb-3">
                   Author: {item.author} <br />
                   Publisher: {item.Publisher}
                 </p>
-                <a href="#" className="btn btn-lg btn-outline-dark">
+                <a href="#" className={ item.style === 1 ? "btn btn-lg btn-outline-dark" : "btn btn-lg btn-outline-light" }>
                   Detail
                 </a>
               </div>
@@ -101,9 +105,9 @@ export default function Slider() {
           }
           .container {
             position: absolute;
-            top: 30%;
+            top: 15%;
             bottom: 0;
-            left: 40%;
+            left: 25%;
             right: 0;
             padding-bottom: 50px;
           }

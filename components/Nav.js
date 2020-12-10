@@ -1,11 +1,9 @@
-import Link from "next/link"
-import React, { useEffect } from "react"
-import { useRouter } from "next/router"
+import { useState, useEffect } from "react"
+import { Router, useRouter } from "next/router"
 
-const Navbar = () => {
-  var router = useRouter()
-  
-  
+const Navbar = ({ indexPage }) => {
+  const router = useRouter()
+
   const onLogOut = function () {
     localStorage.setItem('id', '')
     $(loginBtn).show()
@@ -22,7 +20,21 @@ const Navbar = () => {
       $(accountIcon).hide();
       $(cartIcon).hide();
     }
+
+    if(localStorage.getItem('id') == router.query.id) {
+      window.location.reload(0.2)
+    }
+
   }, []);
+
+
+  const passOption = (option) => {
+    Router.push({
+      pathname: "/profile/userPage",
+      query: {option: option}
+    })
+  } 
+
 
   return (
     <div
@@ -53,12 +65,12 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="/Home">
-                HOME <span className="sr-only">(current)</span>
+              <a className={ indexPage === 1 ? "nav-link font-weight-bold" : "nav-link" } href="/Home">
+                HOME
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/category/library">
+              <a className={ indexPage === 2 ? "nav-link font-weight-bold text-dark" : "nav-link" } href="/category/library">
                 LIBRARY
               </a>
             </li>
@@ -96,17 +108,17 @@ const Navbar = () => {
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdown"
             >
-              <a className="dropdown-item" href="/profile/userPage">
+              <a className="dropdown-item" type="button" onClick={() => {passOption(2)}}>
                 Account Management
               </a>
-              <a className="dropdown-item" href="/profile/userPage">
+              <a className="dropdown-item" type="button" onClick={() => {passOption(0)}}>
                 My Store
               </a>
-              <a className="dropdown-item" href="/profile/userPage">
+              <a className="dropdown-item" type="button" onClick={() => {passOption(1)}}>
                 History
               </a>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" onClick={onLogOut} style={{cursor:'pointer'}}>
+              <a href="/Home" className="dropdown-item" onClick={onLogOut} style={{cursor:'pointer'}}>
                 Sign Out
               </a>
             </div>

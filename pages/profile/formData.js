@@ -1,26 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 
-const formData = ({ token, url }) => {
+const formData = ({ token, url, user, refresh }) => {
     const [statusData, setStatusData] = useState(true)
     const [statusAddress, setStatusAddrees] = useState(true)
-    const [data, setdata] = useState([])
     const month = ["January", "February", "March", "April", "May", "June" ,"July", "August", "September", "October", "November", "December"]
     let count = []
 
-
-    useEffect(() => {
-        const requestOptions = {
-            method: "GET",
-            headers: { "Content-Type": "application/json", "Authorization": "Token " + token }
-        }
-        const fetchdata = async () => {
-            const res = await fetch(url, requestOptions)
-            const data = await res.json()
-            setdata(data)
-        }
-        fetchdata()
-
-    }, [statusData, statusAddress])
+    
+    $("#submitNewPassword").prop("disabled", true)
 
     const changeStatus = (field) => {
         if(field === "data") {
@@ -35,11 +22,13 @@ const formData = ({ token, url }) => {
         let birth = ""
         let format = {}
 
+        refresh()
+
         if( $("#day").val() != "" && $("#month").val() != "" && $("#year").val() != "" ) {
             birth = $("#year").val() + "-" + $("#month").val() + "-" + $("#day").val()
         }
         else {
-            birth = data.dateOfBirth
+            birth = user.dateOfBirth
         }
         
         if(type === "data") {
@@ -54,7 +43,7 @@ const formData = ({ token, url }) => {
             setStatusData(!statusData)
             fetchdata("PATCH" , format)
         }
-        else if (type === "address") {
+        if (type === "address") {
             format = {
                 addressName: $("#name").val(),
                 street: $("#street").val(),
@@ -66,19 +55,20 @@ const formData = ({ token, url }) => {
             setStatusAddrees(!statusAddress)
             fetchdata("PATCH" , format)
         }
-        else if (type === "password") {
+        if (type === "password") {
             let login = {
-                username: data.email,
+                username: user.email,
                 password: $("#oldPassword").val()
             }
 
+            
             format = {
                 password: $("#newPassword").val()
             }
 
             const requestOptions = {
                 method: "POST",
-                headers: { "Content-Type": "application/json", "Authorization": "Token " + token },
+                headers: { "Content-Type": "application/json"},
                 body: JSON.stringify(login)
             }
 
@@ -87,8 +77,8 @@ const formData = ({ token, url }) => {
                 if(res.ok) {
                     $("#message").hide()
                     fetchdata("PATCH", format)
-                    document.getElementById("oldPassword").value=""
                     document.getElementById("newPassword").value=""
+                    document.getElementById("oldPassword").value=""
                     document.getElementById("confirmPassword").value=""
                 }
                 else {
@@ -162,43 +152,43 @@ const formData = ({ token, url }) => {
                         <div className="container mb-5 ml-3 text-muted">
                             <div className="row">
                                 <span className="font-weight-bold" style={{ width: "100px" }}>NAME</span>
-                                <span>{data.firstName} {data.lastName}</span>
+                                <span>{user.firstName} {user.lastName}</span>
                             </div>
                             <div className="row">
                                 <span className="font-weight-bold" style={{ width: "100px" }}>EMAIL</span>
-                                <span>{data.email}</span>
+                                <span>{user.email}</span>
                             </div>
                             <div className="row">
                                 <span className="font-weight-bold" style={{ width: "100px" }}>PHONE</span>
-                                <span>{data.phone}</span>
+                                <span>{user.phone}</span>
                             </div>
                             <div className="row">
                                 <span className="font-weight-bold" style={{ width: "100px" }}>DATE</span>
-                                <span>{data.dateOfBirth}</span>
+                                <span>{user.dateOfBirth}</span>
                             </div>
                             <div className="row">
                                 <span className="font-weight-bold" style={{ width: "100px" }}>GENDER</span>
-                                <span>{data.gender}</span>
+                                <span>{user.gender}</span>
                             </div>
                         </div>
                     ) : (
                         <form className="p-3 mb-5">
                             <div className="form-row">
                                 <div className="col mb-3 ">
-                                    <input type="text" id="firstName" className="form-control" placeholder="First Name" defaultValue={data.firstName} />
+                                    <input type="text" id="firstName" className="form-control" placeholder="First Name" defaultValue={user.firstName} />
                                 </div>
                                 <div className="col mb-3 ">
-                                    <input type="text" id="lastName" className="form-control" placeholder="Last Name" defaultValue={data.lastName} />
+                                    <input type="text" id="lastName" className="form-control" placeholder="Last Name" defaultValue={user.lastName} />
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="col mb-3">
-                                    <input type="text" id="email" className="form-control" placeholder="Email" defaultValue={data.email} />
+                                    <input type="text" id="email" className="form-control" placeholder="Email" defaultValue={user.email} />
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="col mb-3">
-                                    <input type="text" id="phone" className="form-control" placeholder="Phone" defaultValue={data.phone} />
+                                    <input type="text" id="phone" className="form-control" placeholder="Phone" defaultValue={user.phone} />
                                 </div>
                             </div>
                             <div className="form-row">
@@ -229,7 +219,7 @@ const formData = ({ token, url }) => {
                             </div>
                             <div className="form-row">
                                 <div className="col-md-4 mb-3">
-                                    <select id="gender" className="custom-select mr-sm-2" defaultValue={data.gender}>
+                                    <select id="gender" className="custom-select mr-sm-2" defaultValue={user.gender}>
                                         <option value="">-</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
@@ -262,32 +252,32 @@ const formData = ({ token, url }) => {
                     {statusAddress ? (
                         <div className="container d-flex flex-column mb-5">
                             <div className="d-flex flex-column text-muted mt-3">
-                                <span> {data.addressName} </span>
-                                <span> {data.street} {data.subDistrict} </span>
-                                <span> {data.district} </span>
-                                <span> {data.province} </span>
-                                <span> {data.zipcode} </span>
+                                <span> {user.addressName} </span>
+                                <span> {user.street} {user.subDistrict} </span>
+                                <span> {user.district} </span>
+                                <span> {user.province} </span>
+                                <span> {user.zipcode} </span>
                             </div>
                         </div>
                     ) : (
                         <form className="p-4 mb-5">
                             <div className="form-row mb-2">
-                                <input id="name" className="form-control" type="text" placeholder="Name" defaultValue={data.addressName} />
+                                <input id="name" className="form-control" type="text" placeholder="Address" defaultValue={user.addressName} />
                             </div>
                             <div className="form-row mb-2">
-                                <input id="street" className="form-control" type="text" placeholder="Street" defaultValue={data.street} />
+                                <input id="street" className="form-control" type="text" placeholder="Street" defaultValue={user.street} />
                             </div>
                             <div className="form-row mb-2">
-                                <input id="subDistrict" className="form-control" type="text" placeholder="Sub-District" defaultValue={data.subDistrict} />
+                                <input id="subDistrict" className="form-control" type="text" placeholder="Sub-District" defaultValue={user.subDistrict} />
                             </div>
                             <div className="form-row mb-2">
-                                <input id="district" className="form-control" type="text" placeholder="District" defaultValue={data.district} />
+                                <input id="district" className="form-control" type="text" placeholder="District" defaultValue={user.district} />
                             </div>
                             <div className="form-row mb-2">
-                                <input id="province" className="form-control" type="text" placeholder="Province" defaultValue={data.province} />
+                                <input id="province" className="form-control" type="text" placeholder="Province" defaultValue={user.province} />
                             </div>
                             <div className="form-row mb-2">
-                                <input id="zip" className="form-control" type="text" placeholder="Zip Code" defaultValue={data.zipcode} />
+                                <input id="zip" className="form-control" type="text" placeholder="Zip Code" defaultValue={user.zipcode} />
                             </div>
                             <div className="d-flex flex-row-reverse">
                                 <button className="btn btn-primary mt-3 p-2" type="button" style={{ backgroundColor: "#CD2424", width: "50%", border: "none" }} onClick={() => updateData("address")} >Confirm</button>
@@ -318,7 +308,7 @@ const formData = ({ token, url }) => {
                         <span id="message" className="text-danger" style={{ display: "none" }}><small>Please check your password!</small></span>
                     </div>
                     <div className="d-flex flex-row-reverse">
-                        <button id="submitNewPassword" className="btn btn-primary mt-3 p-2" type="button" style={{ backgroundColor: "#CD2424", width: "30%", border: "none" }} onClick={() => updateData("password")} disabled >Confirm</button>
+                        <button id="submitNewPassword" className="btn btn-primary mt-3 p-2" type="button" style={{ backgroundColor: "#CD2424", width: "30%", border: "none" }} onClick={() => updateData("password")} >Confirm</button>
                     </div>
                 </form>
             </div>

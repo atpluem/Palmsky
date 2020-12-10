@@ -26,6 +26,7 @@ export default function choosePayment() {
             return response.json();
           } else {
             $("#invalid").show();
+            document.getElementById("password").value=""
           }
         })
         .then((responseJson) => {
