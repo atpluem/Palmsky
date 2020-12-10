@@ -1,22 +1,9 @@
-<<<<<<< HEAD
-import { useState, useEffect } from "react"
+
+import React, { useEffect, useState } from "react";
 import { Router, useRouter } from "next/router"
 
 const Navbar = ({ indexPage }) => {
   const router = useRouter()
-
-  const onLogOut = function () {
-    localStorage.setItem('id', '')
-    $(loginBtn).show()
-    $(registerBtn).show()
-  }
-  
-=======
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import Router from "next/router";
-
-const Navbar = () => {
   const [search, setSearch] = useState("");
 
   const onLogOut = () => {
@@ -42,7 +29,6 @@ const Navbar = () => {
     });
   };
 
->>>>>>> eb9adb345dfa42af7400c7dab0da3745c2c9b540
   useEffect(() => {
     if (localStorage.getItem("id") != "") {
       $(loginBtn).hide();
@@ -158,16 +144,12 @@ const Navbar = () => {
                 History
               </a>
               <div className="dropdown-divider"></div>
-<<<<<<< HEAD
-              <a href="/Home" className="dropdown-item" onClick={onLogOut} style={{cursor:'pointer'}}>
-=======
               <a
                 className="dropdown-item"
                 href="/Home"
                 onClick={onLogOut}
                 style={{ cursor: "pointer" }}
               >
->>>>>>> eb9adb345dfa42af7400c7dab0da3745c2c9b540
                 Sign Out
               </a>
             </div>

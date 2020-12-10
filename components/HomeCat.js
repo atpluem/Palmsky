@@ -32,7 +32,6 @@ export default function HomeCat() {
   }, [])
 
   return (
-<<<<<<< HEAD
     <div className="container">
         <div className="p-5">
           <div className="d-flex flex-row ">
@@ -77,26 +76,6 @@ export default function HomeCat() {
           </div>
         </div>
 
-=======
-    <div>
-      <div className={styles.catName}>Rank</div>
-      <div className={styles.container}>
-        <Carousel breakPoints={breakPoints} itemPadding={[40, 0]}>
-          {books.map(function (item, i) {
-            return (
-              <div className={styles.item} key={i}>
-                <a href={item.pk} style={{ textDecoration: "none" }}>
-                  <img src={item.cover_Image} height="300" />
-                  <span className={styles.top}>{item.title}</span>
-                  <br />
-                  <span className={styles.price}>฿{item.price}</span>
-                </a>
-              </div>
-            );
-          })}
-        </Carousel>
-      </div>
->>>>>>> eb9adb345dfa42af7400c7dab0da3745c2c9b540
     </div>
   )
 }

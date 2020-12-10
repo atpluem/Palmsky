@@ -41,11 +41,6 @@ const library = () => {
     }
   }, [router]);
 
-<<<<<<< HEAD
-    return (
-        <div>
-            <Navbar indexPage={2} />
-=======
   //function for filter book's category
   const selectCategory = (parameter) => {
     $(Tag).show();
@@ -62,7 +57,6 @@ const library = () => {
       setString(parameter.toUpperCase());
     }
   };
->>>>>>> eb9adb345dfa42af7400c7dab0da3745c2c9b540
 
   return (
     <div>
