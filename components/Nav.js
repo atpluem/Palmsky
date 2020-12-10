@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import Router from "next/router";
 
 const Navbar = () => {
-  var router = useRouter();
 
   const onLogOut = function () {
     localStorage.setItem("id", "");
@@ -96,13 +95,13 @@ const Navbar = () => {
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdown"
             >
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="/profile/userPage">
                 Account Management
               </a>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="/profile/userPage">
                 My Store
               </a>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="/profile/userPage">
                 History
               </a>
               <div className="dropdown-divider"></div>

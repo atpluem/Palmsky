@@ -5,6 +5,7 @@ import Nav from "../components/Nav";
 import Slider from "../components/Slider"
 import HomeCat from "../components/HomeCat";
 import Footer from "../components/Footer";
+import Promotion from "./category/promoteTag"
 // Style
 import styles from "../styles/home.module.scss";
 
@@ -13,7 +14,10 @@ export default function Home() {
     <div>
       <main>
         <Nav />
-        <Slider />
+        <Slider/>
+        <div className="container mb-5 mt-2" >
+            <Promotion />
+          </div>
         <HomeCat />
         <HomeCat />
         <Footer />
