@@ -15,7 +15,7 @@ const Navbar = ({ indexPage }) => {
   const onEnter = (e) => {
     if (e.which == 13) {
       e.preventDefault();
-      Router.push({
+      router.push({
         pathname: "/category/library",
         query: { search: search },
       });
@@ -23,7 +23,7 @@ const Navbar = ({ indexPage }) => {
   };
 
   const onSearch = () => {
-    Router.push({
+    router.push({
       pathname: "/category/library",
       query: { search: search },
     });
@@ -48,7 +48,7 @@ const Navbar = ({ indexPage }) => {
 
 
   const passOption = (option) => {
-    Router.push({
+    router.push({
       pathname: "/profile/userPage",
       query: {option: option}
     })

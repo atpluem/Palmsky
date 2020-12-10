@@ -19,7 +19,7 @@ const tags = ({ datas }) => {
                 <p className = "pr-2 h5 ">{datas}</p>
                 <hr style={{ width:'100%', borderTop: "1px solid black" }} />
             </div>
-            <div className = "d-flex flex-row scroll-slide smooth-scroll" >
+            <div id="bookContainer" className = "d-flex flex-row scroll-slide smooth-scroll" >
                 {tagBook.map((item,key) => (
                     <div className = "mt-3 mr-3" key={key} style={{ cursor: "pointer" }}>
                         <div className = "card shadow-sm" style = {{ width: '18rem' }}>
@@ -32,7 +32,7 @@ const tags = ({ datas }) => {
                         </div>
                     </div>
                 ))}
-            </div>
+            </div>        
         </div>
     )
 

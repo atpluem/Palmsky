@@ -1,4 +1,5 @@
-import React, { Component } from "react"
+import React from "react"
+import Style from "../styles/slide.module.scss"
 
 export default function Slider() {
   const image = [{
@@ -50,18 +51,18 @@ export default function Slider() {
           {image.map((item,key) => (
             <div key={key} className={item.index === 0 ? "carousel-item active bg-white" : "carousel-item bg-dark"} >
               <div style={ item.style === 1 ? { backgroundSize: "cover", overflow: "hidden", backgroundAttachment: "center", filter: "opacity(20%)" } : {  backgroundSize: "cover", overflow: "hidden", backgroundAttachment: "center", filter: "opacity(70%)" }}>
-                <img src={item.img} style={{ width: "100%" }} />
+                <img className={Style.imagePhone} src={item.img} />
               </div>
               <div className={ item.style === 1 ? "container font-weight-bold text-dark" : "container font-weight-bold text-ligth"}>
-                <div style={{ position: "absolute", top: "10%", left:"15%", width: "400px" }}>
+                <div className={Style.subimagePhone}>
                   <img src={item.imgCharecter} style={{ width: "100%" }} />
                 </div>
-                <p className="h1">{item.name}</p>
+                <p className="h1" >{item.name}</p>
                 <p className="h5 mb-3">
                   Author: {item.author} <br />
                   Publisher: {item.Publisher}
                 </p>
-                <a href="#" className={ item.style === 1 ? "btn btn-lg btn-outline-dark" : "btn btn-lg btn-outline-light" }>
+                <a href="#" className={ item.style === 1 ? "btn btn-lg btn-outline-dark" : "btn btn-lg btn-outline-light" } style={{ zIndex: 2, position: "absolute" }}>
                   Detail
                 </a>
               </div>
@@ -107,7 +108,7 @@ export default function Slider() {
             position: absolute;
             top: 15%;
             bottom: 0;
-            left: 25%;
+            left: 20%;
             right: 0;
             padding-bottom: 50px;
           }
