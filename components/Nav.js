@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Router from "next/router";
 
 const Navbar = () => {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState("");
 
   const onLogOut = () => {
     localStorage.setItem("id", "");
@@ -11,12 +11,22 @@ const Navbar = () => {
     $(registerBtn).show();
   };
 
-  const onSearch = (e) => {
+  const onEnter = (e) => {
+    if (e.which == 13) {
+      e.preventDefault();
+      Router.push({
+        pathname: "/category/library",
+        query: { search: search },
+      });
+    }
+  };
+
+  const onSearch = () => {
     Router.push({
-      pathname: '/category/library',
-      query: {search: search}
-    })
-  }
+      pathname: "/category/library",
+      query: { search: search },
+    });
+  };
 
   useEffect(() => {
     if (localStorage.getItem("id") != "") {
@@ -72,13 +82,19 @@ const Navbar = () => {
 
           <form className="form-inline">
             <div className="search-box">
-              <input onChange={event => setSearch(event.target.value)}
+              <input
+                onChange={(event) => setSearch(event.target.value)}
                 className="search-txt form-control"
                 type="text"
                 placeholder="Type to search"
-                onKeyPress={onSearch}
+                onKeyPress={(e) => onEnter(e)}
               />
-              <a id="searchIcon" className="search-btn" style={{cursor: 'pointer'}} onClick={onSearch}>
+              <a
+                id="searchIcon"
+                className="search-btn"
+                style={{ cursor: "pointer" }}
+                onClick={onSearch}
+              >
                 <i className="fas fa-search"></i>
               </a>
             </div>
