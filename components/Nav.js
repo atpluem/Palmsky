@@ -1,15 +1,22 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import Router from "next/router";
 
 const Navbar = () => {
+  const [search, setSearch] = useState('')
 
-  const onLogOut = function () {
+  const onLogOut = () => {
     localStorage.setItem("id", "");
     $(loginBtn).show();
     $(registerBtn).show();
   };
+
+  const onSearch = (e) => {
+    Router.push({
+      pathname: '/category/library',
+      query: {search: search}
+    })
+  }
 
   useEffect(() => {
     if (localStorage.getItem("id") != "") {
@@ -65,12 +72,13 @@ const Navbar = () => {
 
           <form className="form-inline">
             <div className="search-box">
-              <input
+              <input onChange={event => setSearch(event.target.value)}
                 className="search-txt form-control"
                 type="text"
                 placeholder="Type to search"
+                onKeyPress={onSearch}
               />
-              <a className="search-btn" href="#">
+              <a id="searchIcon" className="search-btn" style={{cursor: 'pointer'}} onClick={onSearch}>
                 <i className="fas fa-search"></i>
               </a>
             </div>
