@@ -17,7 +17,7 @@ export default function BookDetail() {
         const response = await fetch(`${url}/${router.query.BookDetail}/`)
         const data = await response.json()
         setBook(data)
-      };
+      }
       fetchData()
     }
   }, [router])

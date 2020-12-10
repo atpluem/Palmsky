@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState, useEffect } from "react"
 import { Router, useRouter } from "next/router"
 
@@ -10,8 +11,40 @@ const Navbar = ({ indexPage }) => {
     $(registerBtn).show()
   }
   
+=======
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import Router from "next/router";
+
+const Navbar = () => {
+  const [search, setSearch] = useState("");
+
+  const onLogOut = () => {
+    localStorage.setItem("id", "");
+    $(loginBtn).show();
+    $(registerBtn).show();
+  };
+
+  const onEnter = (e) => {
+    if (e.which == 13) {
+      e.preventDefault();
+      Router.push({
+        pathname: "/category/library",
+        query: { search: search },
+      });
+    }
+  };
+
+  const onSearch = () => {
+    Router.push({
+      pathname: "/category/library",
+      query: { search: search },
+    });
+  };
+
+>>>>>>> eb9adb345dfa42af7400c7dab0da3745c2c9b540
   useEffect(() => {
-    if (localStorage.getItem('id') != '') {
+    if (localStorage.getItem("id") != "") {
       $(loginBtn).hide();
       $(registerBtn).hide();
     } else {
@@ -79,11 +112,18 @@ const Navbar = ({ indexPage }) => {
           <form className="form-inline">
             <div className="search-box">
               <input
+                onChange={(event) => setSearch(event.target.value)}
                 className="search-txt form-control"
                 type="text"
                 placeholder="Type to search"
+                onKeyPress={(e) => onEnter(e)}
               />
-              <a className="search-btn" href="#">
+              <a
+                id="searchIcon"
+                className="search-btn"
+                style={{ cursor: "pointer" }}
+                onClick={onSearch}
+              >
                 <i className="fas fa-search"></i>
               </a>
             </div>
@@ -118,7 +158,16 @@ const Navbar = ({ indexPage }) => {
                 History
               </a>
               <div className="dropdown-divider"></div>
+<<<<<<< HEAD
               <a href="/Home" className="dropdown-item" onClick={onLogOut} style={{cursor:'pointer'}}>
+=======
+              <a
+                className="dropdown-item"
+                href="/Home"
+                onClick={onLogOut}
+                style={{ cursor: "pointer" }}
+              >
+>>>>>>> eb9adb345dfa42af7400c7dab0da3745c2c9b540
                 Sign Out
               </a>
             </div>
@@ -127,21 +176,26 @@ const Navbar = ({ indexPage }) => {
           <div
             id="loginBtn"
             className="nav-item"
-            style={{ fontWeight: "bolder" }}
+            style={{ fontWeight: "bolder", display: "none" }}
           >
             <a className="nav-link" href="/login">
               LOGIN
             </a>
           </div>
 
-          <div id="registerBtn" className="nav-item">
-            <a
-              type="button"
-              className="btn btn-outline-dark"
-              style={{ fontWeight: "bolder" }}
-              href="/signup/signup_home"
-            >
-              REGISTER
+          <div
+            id="registerBtn"
+            className="nav-item"
+            style={{ display: "none" }}
+          >
+            <a href="/signup/signup_home">
+              <button
+                type="button"
+                className="btn btn-outline-dark"
+                style={{ fontWeight: "bolder" }}
+              >
+                REGISTER
+              </button>
             </a>
           </div>
         </div>

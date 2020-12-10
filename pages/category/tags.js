@@ -13,7 +13,6 @@ const tags = ({ datas }) => {
 
     }, [datas])
 
-
     return (
         <div className = "mt-5 mb-5" >
             <div className = "d-flex flex-row">
