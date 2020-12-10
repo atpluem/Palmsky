@@ -1,29 +1,68 @@
 import Profile from './profile';
 import Category from './selectCategory';
 import Success from './sucess'
+import Unsuccess from './unsuccessful'
 export default function singup_home() {
 
     var countpage = 0;
     var validate = 0;
     var validateform = function () {
         //first page
-        $('#next').prop('disabled', false);
-        if (countpage == 0 && ($('#email').val() != "" && $('#password').val() != "" && $('#confpassword').val() != "")
-            && ($('#password').val() == $('#confpassword').val())) {
-            $('#next').prop("disabled", false);
-            validate = 1;
-        } else {
-            $('#next').prop("disabled", true);
-            validate = 0;
-        }
+        $('#checkEmailFormat').hide()
         if ($('#password').val() != $('#confpassword').val()) {
+            validate = 0;
             $('#passmatch').show();
         } else {
             $('#passmatch').hide();
         }
+        if (!(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test($('#email').val()))) {
+            $('#checkEmailFormat').show()
+            $('#next').prop("disabled", true);
+            validate = 0;
+        }
+        else if (countpage == 0 && ($('#email').val() != "" && $('#password').val() != "" && $('#confpassword').val() != "")
+            && ($('#password').val() == $('#confpassword').val())
+            && (/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test($('#email').val()))
+        ) {
 
+            //$('#next').prop("disabled", false);
+           // validate = 1;
+            const requestOptions = {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            };
+            const url = "https://shielded-caverns-34585.herokuapp.com/api/account/?search=" + $('#email').val();
+            console.log(url)
+            var canget = 0;
+            fetch(url, requestOptions)
+                .then((response) => {
+                    if (response.ok) {
+                        console.log(response)
+                        canget = 1;
+                        return response.json();
+                    } else {
+                        canget = 0;
+                    }
+                }).then((responseJson) => {
+                    if (canget == 1) {
+                        if (JSON.stringify(responseJson).length != 2) {
+                            console.log("yes")
+                            $('#checkEmail').show();
+                            $('#next').prop("disabled", true);
+                        } else {
+                            $('#checkEmail').hide();
+                            $('#next').prop("disabled", false);
 
+                        }
+                    }
+                })
+        }
+        else {
+            $('#next').prop("disabled", true);
+            validate = 0;
+        }
     }
+
     var nextclick = function () {
         if (validate == 0) {
             $('#next').prop("disabled", true);
@@ -49,12 +88,7 @@ export default function singup_home() {
                 $('#category').show();
             }
             if (countpage == 3) {
-                $('#step4').addClass("active");
-                $('#continuous').show();
-                $('#success').show();
-                $('#next').hide();
-                $('#backbutton').hide();
-                $('#category').hide();
+
                 //prep data
                 var birth = null;
                 var notification = false;
@@ -91,6 +125,21 @@ export default function singup_home() {
                     body: JSON.stringify(data)
                 };
                 fetch('https://shielded-caverns-34585.herokuapp.com/api/account/', requestOptions)
+                    .then((response) => {
+                        if (response.ok) {
+                            $('#step4').addClass("active");
+                            $('#continuous').show();
+                            $('#success').show();
+                            $('#next').hide();
+                            $('#backbutton').hide();
+                            $('#category').hide();
+                        } else {
+                            $('#step4').addClass("active");
+                            $('#category').hide()
+                            $('#next').prop('disabled', true)
+                            $('#unsuccess').show();
+                        }
+                    })
 
 
             }
@@ -116,6 +165,10 @@ export default function singup_home() {
             $('#step4').removeClass("active");
             $('#category').show();
             $('#success').hide();
+
+            $('#unsuccess').hide();
+            $('#next').prop('disabled', false)
+
         }
 
     }
@@ -151,6 +204,8 @@ export default function singup_home() {
                                     </div>
                                     <div className="form-group">
                                         <input onChange={validateform} type="email" className="form-control" id="email" placeholder="Email" />
+                                        <label id="checkEmail" style={{ fontSize: "12px", color: "#CD2424", display: "none" }}>Email is already exist</label>
+                                        <label id="checkEmailFormat" style={{ fontSize: "12px", color: "#CD2424", display: "none" }}>Input is not email format</label>
                                     </div>
                                     <div className="form-group">
                                         <input onChange={validateform} type="password" className="form-control" id="password" placeholder="Password" />
@@ -171,6 +226,9 @@ export default function singup_home() {
                         </div>
                         <div id="success" style={{ display: "none" }}>
                             <Success />
+                        </div>
+                        <div id="unsuccess" style={{ display: "none" }}>
+                            <Unsuccess />
                         </div>
                         <div className="row justify-content-center ">
                             <form className="row" style={{ maxWidth: "400px", width: "100%" }}>
