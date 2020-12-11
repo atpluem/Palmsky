@@ -1,7 +1,9 @@
 import { useEffect, useState} from 'react'
+import { useRouter } from 'next/router'
 
 const tags = ({ datas }) => {
     const [tagBook, setTag] = useState([])
+    const router = useRouter()
     
     useEffect(() => {
         const fetchdata = async() => {
@@ -13,6 +15,12 @@ const tags = ({ datas }) => {
 
     }, [datas])
 
+    const Goto = (key) => {
+        router.push({
+            pathname: "/" + key
+        })
+    }
+
     return (
         <div className = "mt-5 mb-5" >
             <div className = "d-flex flex-row">
@@ -21,7 +29,7 @@ const tags = ({ datas }) => {
             </div>
             <div id="bookContainer" className = "d-flex flex-row scroll-slide smooth-scroll" >
                 {tagBook.map((item,key) => (
-                    <div className = "mt-3 mr-3" key={key} style={{ cursor: "pointer" }}>
+                    <div className = "mt-3 mr-3" key={key} style={{ cursor: "pointer" }} onClick={() => {Goto(item.pk)}}>
                         <div className = "card shadow-sm" style = {{ width: '18rem' }}>
                             <div className="bg-image">
                                 <img className = "card-image-top img-fluid zoom " style={{ height: "27rem" }} src = {item.cover_Image} alt = "Card" />

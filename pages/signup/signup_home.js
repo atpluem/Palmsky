@@ -200,7 +200,7 @@ export default function singup_home() {
                                     </div>
                                     <div className="form-group">
                                         <input onChange={validateform} type="email" className="form-control" id="email" placeholder="Email" />
-                                        <label id="checkEmail" style={{ fontSize: "12px", color: "#CD2424", display: "none" }}>Email is already exist</label>
+                                        <label id="checkEmail" style={{ fontSize: "12px", color: "#CD2424", display: "none" }}>Email is already exists</label>
                                         <label id="checkEmailFormat" style={{ fontSize: "12px", color: "#CD2424", display: "none" }}>Input is not email format</label>
                                     </div>
                                     <div className="form-group">

@@ -35,7 +35,7 @@ export default function HomeCat() {
     <div className="container">
         <div className="p-5">
           <div className="d-flex flex-row ">
-            <p className="pr-2 h5">Recommend</p>
+            <p className="pr-2 h5">Top-Sale</p>
             <hr style={{ width:'100%', borderTop: "1px solid black" }} />
           </div>
           <div className={styles.container}>
