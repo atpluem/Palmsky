@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
@@ -6,15 +6,46 @@ import Footer from "../components/Footer";
 import styles from "../styles/cart.module.scss";
 
 export default function Cart() {
+  const [count, setCount] = useState({ i0: 0, i1: 0, i2: 0 });
+
+  const selectAll = () => {
+    if ($("#selectAll").is(":checked")) {
+      $("#selectItem1").prop("checked", true);
+      $("#selectItem2").prop("checked", true);
+      $("#selectItem3").prop("checked", true);
+    } else {
+      $("#selectItem1").prop("checked", false);
+      $("#selectItem2").prop("checked", false);
+      $("#selectItem3").prop("checked", false);
+    }
+  };
+
+  const selectSome = () => {
+    if (
+      !$("#selectItem1").is(":checked") ||
+      !$("#selectItem2").is(":checked") ||
+      !$("#selectItem3").is(":checked")
+    ) {
+      $("#selectAll").prop("checked", false);
+    } else {
+      $("#selectAll").prop("checked", true);
+    }
+  };
+
   return (
     <div>
       <Nav indexPage={1} />
       <div className="container">
         <div className="row">
           {/* SELECT */}
-          <div className="col" style={{ height: "20%" }}>
+          <div className="col">
             <div className={styles.inputGroup}>
-              <input id="selectAll" name="selectAll" type="checkbox" />
+              <input
+                id="selectAll"
+                name="selectAll"
+                type="checkbox"
+                onClick={selectAll}
+              />
               <label htmlFor="selectAll">Select All</label>
             </div>
 
@@ -22,11 +53,12 @@ export default function Cart() {
               <div className={styles.card}>
                 <input
                   className={styles.check}
-                  id="selectItem"
-                  name="selectItem"
+                  id="selectItem1"
+                  name="selectItem1"
                   type="checkbox"
+                  onClick={selectSome}
                 />
-                <label htmlFor="selectItem" className={styles.bDetail}></label>
+                <label htmlFor="selectItem1" className={styles.bDetail}></label>
                 <div className="row">
                   <div className="col col-md-5">
                     <img
@@ -51,7 +83,14 @@ export default function Cart() {
                           <a id={styles.iconbin}>
                             <i className="fas fa-trash"></i>
                           </a>
-                          <a id={styles.icon}>
+                          <a
+                            onClick={() => {
+                              count["i0"] > 0
+                                ? setCount({ ...count, i0: count["i0"] - 1 })
+                                : console.log("Can't Decrease");
+                            }}
+                            id={styles.icon}
+                          >
                             <i className="fas fa-minus-square"></i>
                           </a>
                           <span
@@ -63,9 +102,21 @@ export default function Cart() {
                               type="number"
                               min="0"
                               step="1"
+                              value={count["i0"]}
+                              onChange={(e) => {
+                                setCount({
+                                  ...count,
+                                  i0: parseInt(e.target.value),
+                                });
+                              }}
                             />
                           </span>
-                          <a id={styles.icon}>
+                          <a
+                            onClick={() =>
+                              setCount({ ...count, i0: count["i0"] + 1 })
+                            }
+                            id={styles.icon}
+                          >
                             <i className="fas fa-plus-square"></i>
                           </a>
                         </div>
@@ -79,8 +130,9 @@ export default function Cart() {
                 <input
                   className={styles.check}
                   id="selectItem2"
-                  name="selectItem"
+                  name="selectItem2"
                   type="checkbox"
+                  onClick={selectSome}
                 />
                 <label htmlFor="selectItem2" className={styles.bDetail}></label>
                 <div className="row">
@@ -96,7 +148,9 @@ export default function Cart() {
                     <div className={styles.cardDetail}>
                       <div>
                         {" "}
-                        <h5>แฮร์รี่ พอตเตอร์ กับห้องแห่งความลับ เล่ม 2 </h5>{" "}
+                        <h5>
+                          แฮร์รี่ พอตเตอร์ กับห้องแห่งความลับ เล่ม 2{" "}
+                        </h5>{" "}
                       </div>
                       <div style={{ color: "#CD2424" }}> Have 8 in stock</div>
                       <div>
@@ -107,7 +161,14 @@ export default function Cart() {
                           <a id={styles.iconbin}>
                             <i className="fas fa-trash"></i>
                           </a>
-                          <a id={styles.icon}>
+                          <a
+                            onClick={() => {
+                              count["i1"] > 0
+                                ? setCount({ ...count, i1: count["i1"] - 1 })
+                                : console.log("Can't Decrease");
+                            }}
+                            id={styles.icon}
+                          >
                             <i className="fas fa-minus-square"></i>
                           </a>
                           <span
@@ -119,9 +180,21 @@ export default function Cart() {
                               type="number"
                               min="0"
                               step="1"
+                              value={count["i1"]}
+                              onChange={(e) => {
+                                setCount({
+                                  ...count,
+                                  i1: parseInt(e.target.value),
+                                });
+                              }}
                             />
                           </span>
-                          <a id={styles.icon}>
+                          <a
+                            onClick={() =>
+                              setCount({ ...count, i1: count["i1"] + 1 })
+                            }
+                            id={styles.icon}
+                          >
                             <i className="fas fa-plus-square"></i>
                           </a>
                         </div>
@@ -135,8 +208,9 @@ export default function Cart() {
                 <input
                   className={styles.check}
                   id="selectItem3"
-                  name="selectItem"
+                  name="selectItem3"
                   type="checkbox"
+                  onClick={selectSome}
                 />
                 <label htmlFor="selectItem3" className={styles.bDetail}></label>
                 <div className="row">
@@ -163,7 +237,14 @@ export default function Cart() {
                           <a id={styles.iconbin}>
                             <i className="fas fa-trash"></i>
                           </a>
-                          <a id={styles.icon}>
+                          <a
+                            onClick={() => {
+                              count["i2"] > 0
+                                ? setCount({ ...count, i2: count["i2"] - 1 })
+                                : console.log("Can't Decrease");
+                            }}
+                            id={styles.icon}
+                          >
                             <i className="fas fa-minus-square"></i>
                           </a>
                           <span
@@ -175,9 +256,21 @@ export default function Cart() {
                               type="number"
                               min="0"
                               step="1"
+                              value={count["i2"]}
+                              onChange={(e) => {
+                                setCount({
+                                  ...count,
+                                  i2: parseInt(e.target.value),
+                                });
+                              }}
                             />
                           </span>
-                          <a id={styles.icon}>
+                          <a
+                            onClick={() =>
+                              setCount({ ...count, i2: count["i2"] + 1 })
+                            }
+                            id={styles.icon}
+                          >
                             <i className="fas fa-plus-square"></i>
                           </a>
                         </div>
@@ -254,7 +347,10 @@ export default function Cart() {
                       </div>
                     </div>
 
-                    <a href="/payment/choosePayment" style={{textDecoration:'none'}}>
+                    <a
+                      href="/payment/choosePayment"
+                      style={{ textDecoration: "none" }}
+                    >
                       <button
                         type="button"
                         style={{ margin: "20px 0 20px 0" }}
