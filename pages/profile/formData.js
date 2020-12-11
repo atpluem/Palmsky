@@ -130,9 +130,11 @@ const formData = ({ token, url, user, refresh }) => {
     }
 
 
+    if(url === undefined) {
 
-    return (
-        <div className="container-fluid mt-5" style={{ width: "40%" }}>
+        
+        return (
+            <div className="container-fluid mt-5" style={{ width: "40%" }}>
             {/* User's data */}
             <div className="row">
                 {statusData ? ( 
@@ -197,7 +199,7 @@ const formData = ({ token, url, user, refresh }) => {
                                         {loop(1,31)}                                   
                                         {count.map((item,index) => (
                                             <option value={item} key={index} >{item}</option>
-                                        ))}
+                                            ))}
                                     </select>
                                 </div>
                                 <div className="col-md-5 mb-3">
@@ -205,7 +207,7 @@ const formData = ({ token, url, user, refresh }) => {
                                         {loop(1,12)}
                                         {month.map((item, index) => (
                                             <option value={(index+1).toString(10).length === 1 ? "0" + (index+1).toString(10) : (index+1).toString(10)} key={index} >{item} </option>
-                                        ))}
+                                            ))}
                                     </select>
                                 </div>
                                 <div className="col-md-4 mb-3">
@@ -315,7 +317,8 @@ const formData = ({ token, url, user, refresh }) => {
 
 
         </div>
-    )
+        )
+    }   
 }
 
 export default formData
