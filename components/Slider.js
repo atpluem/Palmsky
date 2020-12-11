@@ -23,7 +23,7 @@ export default function Slider() {
     imgCharecter: "https://static.zerochan.net/Yuna.%28Kuma.Kuma.Kuma.Bear%29.full.2989781.png",
     name: "KUMA KUMA KUMA BEAR",
     author: "Nobuta Yuu",
-    Publisher: ", filter: 'opacity(30%)'",
+    Publisher: "Shōsetsuka ni Narō.",
     style: 2,
     index: 2
   }
