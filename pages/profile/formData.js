@@ -6,8 +6,6 @@ const formData = ({ token, url, user, refresh }) => {
     const month = ["January", "February", "March", "April", "May", "June" ,"July", "August", "September", "October", "November", "December"]
     let count = []
 
-    
-    $("#submitNewPassword").prop("disabled", true)
 
     const changeStatus = (field) => {
         if(field === "data") {
@@ -130,8 +128,7 @@ const formData = ({ token, url, user, refresh }) => {
     }
 
 
-    if(url === undefined) {
-
+    if(url !== undefined) {
         
         return (
             <div className="container-fluid mt-5" style={{ width: "40%" }}>
@@ -318,7 +315,15 @@ const formData = ({ token, url, user, refresh }) => {
 
         </div>
         )
-    }   
+    } 
+    
+    else {
+        return (
+            <div>
+                No Data
+            </div>
+        )
+    }
 }
 
 export default formData
