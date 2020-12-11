@@ -53,7 +53,6 @@ export default function singup_home() {
                             validate=1;
                             $('#checkEmail').hide();
                             $('#next').prop("disabled", false);
-
                         }
                     }
                 })
