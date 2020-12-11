@@ -2,11 +2,11 @@ import React from 'react'
 
 const bookStoreUser = () => {
     const number = [
-        { image: "https://shielded-caverns-34585.herokuapp.com/media/image/9789742894177l_IuKvxhQ.jpg", title: "เกมล่าบัลลังก์ 1.1 : A Game of Thrones"},
-        { image: "https://shielded-caverns-34585.herokuapp.com/media/image/9786164927865l.jpg", title: "อุ้ยเซี่ยวป้อ เหยียบยอดยุทธจักร เล่ม 5"}, 
-        { image: "https://shielded-caverns-34585.herokuapp.com/media/image/51xksnD26SL._AC_UL600_SR426600__6zmECi6.jpg", title: "5 Centimeters Per Second"}, 
-        { image: "https://shielded-caverns-34585.herokuapp.com/media/image/pfejuof7sthpR5etJZx-o.jpg", title: "คุมะ คุมะ คุมะ แบร์"}, 
-        { image: "https://shielded-caverns-34585.herokuapp.com/media/image/_734x1024__1.jpg", title: "สามก๊ก ฉบับแปลใหม่ เล่ม 1-2 (บรรจุกล่อง : Book Set)"}
+        { image: "/GameBook.jpg", title: "เกมล่าบัลลังก์ 1.1 : A Game of Thrones" },
+        { image: "/Life.jpg", title: "อุ้ยเซี่ยวป้อ เหยียบยอดยุทธจักร เล่ม 5"}, 
+        { image: "/5CM.jpg", title: "5 Centimeters Per Second"}, 
+        { image: "/Kuma.jpg", title: "คุมะ คุมะ คุมะ แบร์"}, 
+        { image: "/3GG.jpg", title: "สามก๊ก ฉบับแปลใหม่ เล่ม 1-2 (บรรจุกล่อง : Book Set)"}
     ]
     
     return (

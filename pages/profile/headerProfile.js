@@ -9,9 +9,9 @@ const headerProfile = ({ user, state, changeOption }) => {
                     <img style={{ width: "200px", height:"200px", borderRadius: "50%", objectFit: "cover", border: "1px solid gray"}} src="https://i.pinimg.com/originals/df/60/04/df6004a866c5f5a535116a1a85971d8a.jpg"  />
                 </div>
                 <div className="d-flex flex-column align-self-center ml-4">
-                    <p className="h2">{user.firstName} {user.lastName}</p>
-                    <span>{user.email}</span>
-                    <span>{user.gender}</span>
+                    <p className="h2">{user !== undefined ? user.firstName : ""} {user !== undefined ? user.lastName : ""}</p>
+                    <span>{user !== undefined ? user.email : ""}</span>
+                    <span>{user !== undefined ? user.gender : ""}</span>
                 </div>
             </div>
 
