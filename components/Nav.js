@@ -209,6 +209,7 @@ const Navbar = ({ indexPage }) => {
           line-height: 40px;
           transition: 0.4s;
         }
+        
         .search-box:hover > .search-btn {
           background: white;
         }
