@@ -32,7 +32,7 @@ const tags = ({ datas }) => {
                     <div className = "mt-3 mr-3" key={key} style={{ cursor: "pointer" }} onClick={() => {Goto(item.pk)}}>
                         <div className = "card shadow-sm" style = {{ width: '18rem' }}>
                             <div className="bg-image">
-                                <img className = "card-image-top img-fluid zoom " style={{ height: "27rem" }} src = {item.cover_Image} alt = "Card" alt="https://image.freepik.com/free-photo/dark-grey-black-slate-texture-with-high-resolution-background-natural-black-stone-wall_38607-306.jpg"/>
+                                <img className = "card-image-top img-fluid zoom " style={{ height: "27rem" }} src = {item.cover_Image !== undefined ? item.cover_Image :  "https://image.freepik.com/free-photo/dark-grey-black-slate-texture-with-high-resolution-background-natural-black-stone-wall_38607-306.jpg"} />
                             </div>
                             <div className = "card-body" style={{ textAlign: "center" }}>
                                 <p className = "card-text" style={{ textOverflow: "ellipsis" }}> {item.title} </p>
