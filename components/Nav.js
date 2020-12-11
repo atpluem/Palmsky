@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { Router, useRouter } from "next/router"
+import { useRouter } from "next/router"
 
 const Navbar = ({ indexPage }) => {
   const router = useRouter()
@@ -133,19 +133,20 @@ const Navbar = ({ indexPage }) => {
             <div
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdown"
+              style={{ backgroundColor: "#CD2424" }}
             >
-              <a className="dropdown-item" type="button" onClick={() => {passOption(2)}}>
+              <a className="dropdown-item text-white hover-select" type="button" onClick={() => {passOption(2)}}>
                 Account Management
               </a>
-              <a className="dropdown-item" type="button" onClick={() => {passOption(0)}}>
+              <a className="dropdown-item text-white hover-select" type="button" onClick={() => {passOption(0)}}>
                 My Store
               </a>
-              <a className="dropdown-item" type="button" onClick={() => {passOption(1)}}>
+              <a className="dropdown-item text-white hover-select" type="button" onClick={() => {passOption(1)}}>
                 History
               </a>
-              <div className="dropdown-divider"></div>
+              <div className="dropdown-divider" style={{ borderColor: "#781414" }}></div>
               <a
-                className="dropdown-item"
+                className="dropdown-item text-white hover-select"
                 href="/Home"
                 onClick={onLogOut}
                 style={{ cursor: "pointer" }}
