@@ -111,9 +111,11 @@ export default function Cart() {
                             />
                           </span>
                           <a
-                            onClick={() =>
-                              setCount({ ...count, i0: count["i0"] + 1 })
-                            }
+                            onClick={() => {
+                              count["i0"] < 3
+                                ? setCount({ ...count, i0: count["i0"] + 1 })
+                                : console.log("Can't Increase");
+                            }}
                             id={styles.icon}
                           >
                             <i className="fas fa-plus-square"></i>
@@ -189,9 +191,11 @@ export default function Cart() {
                             />
                           </span>
                           <a
-                            onClick={() =>
-                              setCount({ ...count, i1: count["i1"] + 1 })
-                            }
+                            onClick={() => {
+                              count["i1"] < 8
+                                ? setCount({ ...count, i1: count["i1"] + 1 })
+                                : console.log("Can't Increase");
+                            }}
                             id={styles.icon}
                           >
                             <i className="fas fa-plus-square"></i>
@@ -265,9 +269,11 @@ export default function Cart() {
                             />
                           </span>
                           <a
-                            onClick={() =>
-                              setCount({ ...count, i2: count["i2"] + 1 })
-                            }
+                            onClick={() => {
+                              count["i2"] < 2
+                                ? setCount({ ...count, i2: count["i2"] + 1 })
+                                : console.log("Can't Increase");
+                            }}
                             id={styles.icon}
                           >
                             <i className="fas fa-plus-square"></i>
