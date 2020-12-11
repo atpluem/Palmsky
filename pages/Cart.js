@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import styles from "../styles/cart.module.scss";
 
 export default function Cart() {
-  const [count, setCount] = useState({ i0: 0, i1: 0, i2: 0 });
+  const [count, setCount] = useState({ i0: 1, i1: 1, i2: 1 });
 
   const selectAll = () => {
     if ($("#selectAll").is(":checked")) {
@@ -84,7 +84,7 @@ export default function Cart() {
                           </a>
                           <a
                             onClick={() => {
-                              count["i0"] > 0
+                              count["i0"] > 1
                                 ? setCount({ ...count, i0: count["i0"] - 1 })
                                 : console.log("Can't Decrease");
                             }}
@@ -99,7 +99,7 @@ export default function Cart() {
                             <input
                               className="form-control"
                               type="number"
-                              min="0"
+                              min="1"
                               step="1"
                               value={count["i0"]}
                               onChange={(e) => {
@@ -126,7 +126,6 @@ export default function Cart() {
                   </div>
                 </div>
               </div>
-
 
               <div className={styles.card}>
                 <input
@@ -165,7 +164,7 @@ export default function Cart() {
                           </a>
                           <a
                             onClick={() => {
-                              count["i1"] > 0
+                              count["i1"] > 1
                                 ? setCount({ ...count, i1: count["i1"] - 1 })
                                 : console.log("Can't Decrease");
                             }}
@@ -180,7 +179,7 @@ export default function Cart() {
                             <input
                               className="form-control"
                               type="number"
-                              min="0"
+                              min="1"
                               step="1"
                               value={count["i1"]}
                               onChange={(e) => {
@@ -243,7 +242,7 @@ export default function Cart() {
                           </a>
                           <a
                             onClick={() => {
-                              count["i2"] > 0
+                              count["i2"] > 1
                                 ? setCount({ ...count, i2: count["i2"] - 1 })
                                 : console.log("Can't Decrease");
                             }}
@@ -258,7 +257,7 @@ export default function Cart() {
                             <input
                               className="form-control"
                               type="number"
-                              min="0"
+                              min="1"
                               step="1"
                               value={count["i2"]}
                               onChange={(e) => {
