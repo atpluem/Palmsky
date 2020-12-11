@@ -26,8 +26,9 @@ const tags = ({ datas }) => {
                             <div className="bg-image">
                                 <img className = "card-image-top img-fluid zoom " style={{ height: "27rem" }} src = {item.cover_Image} alt = "Card" />
                             </div>
-                            <div className = "card-body">
+                            <div className = "card-body" style={{ textAlign: "center" }}>
                                 <p className = "card-text" style={{ textOverflow: "ellipsis" }}> {item.title} </p>
+                                <span className = "card-text font-weight-bold" >฿{item.price}</span>
                             </div>
                         </div>
                     </div>
