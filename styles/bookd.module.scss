@@ -3,6 +3,14 @@
   font-size: xx-large;
   padding-top: 5%;
   text-align: center;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
 }
 .subTopic {
   text-align: center;
@@ -12,8 +20,22 @@
 .detailBox {
   padding-top: 50px;
 }
+.coverImg {
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
 #bookDes {
   margin: 10px 0 10px 0;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
 }
 #bookDes1 {
   width: 30%;
@@ -31,10 +53,10 @@
 #icon {
   font-size: 40px;
   padding: 0px 0px 0px 5px;
-  color: #FE1818;
+  color: #fe1818;
 }
 #icon:hover {
-  color: #AF0000;
+  color: #af0000;
 }
 #nBook {
   padding-top: 10px;
@@ -58,8 +80,24 @@
 }
 .detail {
   margin-top: 50px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
 }
 .detailTop {
   font-weight: bolder;
   font-size: xx-large;
+}
+.detailDown {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
 }

@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react"
-import { useRouter } from "next/router"
-import Nav from "../components/Nav"
-import Footer from "../components/Footer"
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
-import styles from "../styles/bookd.module.scss"
+import styles from "../styles/bookd.module.scss";
 
 export default function BookDetail() {
-  const [count, setCount] = useState(Number)
-  const [book, setBook] = useState([])
-  const router = useRouter()
-  const url = "https://shielded-caverns-34585.herokuapp.com/api/book"
+  const [count, setCount] = useState(Number);
+  const [book, setBook] = useState([]);
+  const router = useRouter();
+  const url = "https://shielded-caverns-34585.herokuapp.com/api/book";
 
   useEffect(() => {
-    if(router.asPath !== router.route){
+    if (router.asPath !== router.route) {
       const fetchData = async () => {
-        const response = await fetch(`${url}/${router.query.BookDetail}/`)
-        const data = await response.json()
-        setBook(data)
-      }
-      fetchData()
+        const response = await fetch(`${url}/${router.query.BookDetail}/`);
+        const data = await response.json();
+        setBook(data);
+      };
+      fetchData();
     }
-  }, [router])
+  }, [router]);
 
   return (
     <div>
@@ -30,7 +30,7 @@ export default function BookDetail() {
         <div className={styles.detailBox}>
           <div className="row">
             <div className="col">
-              <img
+              <img className={styles.coverImg}
                 src={book.cover_Image}
                 style={{ maxWidth: "375px" }}
                 alt=""
@@ -54,7 +54,7 @@ export default function BookDetail() {
                 <div className="row justify-content-center">
                   <a
                     onClick={() => {
-                      count > 0
+                      count > 1
                         ? setCount(count - 1)
                         : console.log("Can't Decrease");
                     }}
@@ -66,7 +66,7 @@ export default function BookDetail() {
                     <input
                       className="form-control"
                       type="number"
-                      min="0"
+                      min="1"
                       step="1"
                       value={count}
                       onChange={(e) => {
@@ -74,38 +74,46 @@ export default function BookDetail() {
                       }}
                     />
                   </span>
-                  <a onClick={() => setCount(count + 1)} id={styles.icon}>
+                  <a
+                    onClick={() => {
+                      count < book.stock
+                        ? setCount(count + 1)
+                        : console.log("Can't Increase");
+                    }}
+                    id={styles.icon}
+                  >
                     <i className="fas fa-plus-square"></i>
                   </a>
                 </div>
 
                 <button
-                style={{marginBottom: '20px'}}
+                  style={{ marginBottom: "20px" }}
                   type="button"
                   className="btn btn-danger btn-lg btn-block"
                 >
                   Add to Cart
                 </button>
-                
               </form>
 
-              <div className="row" id={styles.bookDesr}>
-                <div id={styles.bookDes3}>Date</div>
-                <div id={styles.bookDes4}>{book.publish_date}</div>
-              </div>
-              <div className="row" id={styles.bookDesr}>
-                <div id={styles.bookDes3}>Book Size</div>
-                <div id={styles.bookDes4}>
-                  {book.width} x {book.height}
+              <div className={styles.detailDown}>
+                <div className="row" id={styles.bookDesr}>
+                  <div id={styles.bookDes3}>Date</div>
+                  <div id={styles.bookDes4}>{book.publish_date}</div>
                 </div>
-              </div>
-              <div className="row" id={styles.bookDesr}>
-                <div id={styles.bookDes3}>Pages</div>
-                <div id={styles.bookDes4}>{book.pages}</div>
-              </div>
-              <div className="row" id={styles.bookDesr}>
-                <div id={styles.bookDes3}>Stock</div>
-                <div id={styles.bookDes4}>{book.stock}</div>
+                <div className="row" id={styles.bookDesr}>
+                  <div id={styles.bookDes3}>Book Size</div>
+                  <div id={styles.bookDes4}>
+                    {book.width} x {book.height}
+                  </div>
+                </div>
+                <div className="row" id={styles.bookDesr}>
+                  <div id={styles.bookDes3}>Pages</div>
+                  <div id={styles.bookDes4}>{book.pages}</div>
+                </div>
+                <div className="row" id={styles.bookDesr}>
+                  <div id={styles.bookDes3}>Stock</div>
+                  <div id={styles.bookDes4}>{book.stock}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -118,5 +126,5 @@ export default function BookDetail() {
       </div>
       <Footer />
     </div>
-  )
+  );
 }
