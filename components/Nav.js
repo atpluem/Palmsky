@@ -206,14 +206,10 @@ const Navbar = ({ indexPage }) => {
           float: left;
           margin-bottom: 10px;
           padding: 0;
-          width: 0px;
           line-height: 40px;
           transition: 0.4s;
         }
-        .search-box:hover > .search-txt {
-          width: 240px;
-          padding: 0 6 px;
-        }
+        
         .search-box:hover > .search-btn {
           background: white;
         }
