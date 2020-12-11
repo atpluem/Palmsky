@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import styles from "../styles/bookd.module.scss";
 
 export default function BookDetail() {
-  const [count, setCount] = useState(Number);
+  const [count, setCount] = useState(1);
   const [book, setBook] = useState([]);
   const router = useRouter();
   const url = "https://shielded-caverns-34585.herokuapp.com/api/book";
