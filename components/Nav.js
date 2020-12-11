@@ -10,11 +10,20 @@ const Navbar = () => {
     $(loginBtn).show();
     $(registerBtn).show();
   };
+  const onEnter = (e) => {
+    if (e.which == 13) {
+      e.preventDefault();
+      Router.push({
 
+        pathname: '/category/library',
+        query: { search: search }
+      })
+    }
+  }
   const onSearch = (e) => {
     Router.push({
       pathname: '/category/library',
-      query: {search: search}
+      query: { search: search }
     })
   }
 
@@ -76,9 +85,9 @@ const Navbar = () => {
                 className="search-txt form-control"
                 type="text"
                 placeholder="Type to search"
-                onKeyPress={onSearch}
+                onKeyDown={onEnter}
               />
-              <a id="searchIcon" className="search-btn" style={{cursor: 'pointer'}} onClick={onSearch}>
+              <a id="searchIcon" className="search-btn" style={{ cursor: 'pointer' }} onClick={onSearch}>
                 <i className="fas fa-search"></i>
               </a>
             </div>

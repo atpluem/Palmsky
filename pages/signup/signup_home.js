@@ -46,10 +46,11 @@ export default function singup_home() {
                 }).then((responseJson) => {
                     if (canget == 1) {
                         if (JSON.stringify(responseJson).length != 2) {
-                            console.log("yes")
                             $('#checkEmail').show();
                             $('#next').prop("disabled", true);
+                            validate=0;
                         } else {
+                            validate=1;
                             $('#checkEmail').hide();
                             $('#next').prop("disabled", false);
 
@@ -228,7 +229,7 @@ export default function singup_home() {
                         </div>
                         <div className="row justify-content-center ">
                             <form className="row" style={{ maxWidth: "400px", width: "100%" }}>
-                                <a  href="../../login" style={{ width: "100%" }}>
+                                <a href="../../login" style={{ width: "100%" }}>
                                     <button type="button" className="btn btn-danger font-weight-bold" style={{ backgroundColor: "#AF0000", fontSize: 22, width: "100%", display: "none" }} id="continuous" >
                                         Continuous
                                 </button>
