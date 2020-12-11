@@ -1,0 +1,28 @@
+@media screen and (max-width: 840px) {
+    .imagePhone {
+        width: 250%;
+        position: relative;
+        right: 73%;
+        bottom: 40%;
+    }
+    .subimagePhone {
+        position: absolute;
+        top: 10%; 
+        left: 15%; 
+        width: 400px;
+    }
+}
+
+@media screen and (min-width: 840px) {
+    .imagePhone {
+        width: 100%;
+    }
+    
+    .subimagePhone {
+        position: absolute;
+        top: 10%; 
+        left:15%; 
+        width: 400px;
+        
+    }
+}

@@ -1,9 +1,10 @@
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import Router from "next/router";
 
-const Navbar = () => {
-  const [search, setSearch] = useState('')
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router"
+
+const Navbar = ({ indexPage }) => {
+  const router = useRouter()
+  const [search, setSearch] = useState("");
 
   const onLogOut = () => {
     localStorage.setItem("id", "");
@@ -15,6 +16,7 @@ const Navbar = () => {
       e.preventDefault();
       Router.push({
 
+<<<<<<< HEAD
         pathname: '/category/library',
         query: { search: search }
       })
@@ -26,6 +28,24 @@ const Navbar = () => {
       query: { search: search }
     })
   }
+=======
+  const onEnter = (e) => {
+    if (e.which == 13) {
+      e.preventDefault();
+      router.push({
+        pathname: "/category/library",
+        query: { search: search },
+      });
+    }
+  };
+
+  const onSearch = () => {
+    router.push({
+      pathname: "/category/library",
+      query: { search: search },
+    });
+  };
+>>>>>>> 698eb34fd109eccdbecb7624fc3ce157a9b3ed2a
 
   useEffect(() => {
     if (localStorage.getItem("id") != "") {
@@ -37,7 +57,21 @@ const Navbar = () => {
       $(accountIcon).hide();
       $(cartIcon).hide();
     }
+
+    if(localStorage.getItem('id') == router.query.id) {
+      window.location.reload(0.2)
+    }
+
   }, []);
+
+
+  const passOption = (option) => {
+    router.push({
+      pathname: "/profile/userPage",
+      query: {option: option}
+    })
+  } 
+
 
   return (
     <div
@@ -68,12 +102,12 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="/Home">
-                HOME <span className="sr-only">(current)</span>
+              <a className={ indexPage === 1 ? "nav-link font-weight-bold" : "nav-link" } href="/Home">
+                HOME
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/category/library">
+              <a className={ indexPage === 2 ? "nav-link font-weight-bold text-dark" : "nav-link" } href="/category/library">
                 LIBRARY
               </a>
             </li>
@@ -81,13 +115,25 @@ const Navbar = () => {
 
           <form className="form-inline">
             <div className="search-box">
-              <input onChange={event => setSearch(event.target.value)}
+              <input
+                onChange={(event) => setSearch(event.target.value)}
                 className="search-txt form-control"
                 type="text"
                 placeholder="Type to search"
+<<<<<<< HEAD
                 onKeyDown={onEnter}
               />
               <a id="searchIcon" className="search-btn" style={{ cursor: 'pointer' }} onClick={onSearch}>
+=======
+                onKeyPress={(e) => onEnter(e)}
+              />
+              <a
+                id="searchIcon"
+                className="search-btn"
+                style={{ cursor: "pointer" }}
+                onClick={onSearch}
+              >
+>>>>>>> 698eb34fd109eccdbecb7624fc3ce157a9b3ed2a
                 <i className="fas fa-search"></i>
               </a>
             </div>
@@ -111,19 +157,20 @@ const Navbar = () => {
             <div
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdown"
+              style={{ backgroundColor: "#CD2424" }}
             >
-              <a className="dropdown-item" href="/profile/userPage">
+              <a className="dropdown-item text-white hover-select" type="button" onClick={() => {passOption(2)}}>
                 Account Management
               </a>
-              <a className="dropdown-item" href="/profile/userPage">
+              <a className="dropdown-item text-white hover-select" type="button" onClick={() => {passOption(0)}}>
                 My Store
               </a>
-              <a className="dropdown-item" href="/profile/userPage">
+              <a className="dropdown-item text-white hover-select" type="button" onClick={() => {passOption(1)}}>
                 History
               </a>
-              <div className="dropdown-divider"></div>
+              <div className="dropdown-divider" style={{ borderColor: "#781414" }}></div>
               <a
-                className="dropdown-item"
+                className="dropdown-item text-white hover-select"
                 href="/Home"
                 onClick={onLogOut}
                 style={{ cursor: "pointer" }}

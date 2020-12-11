@@ -26,12 +26,17 @@ export default function choosePayment() {
             return response.json();
           } else {
             $("#invalid").show();
+            document.getElementById("password").value=""
           }
         })
         .then((responseJson) => {
           token = responseJson;
+          console.log(token)
           localStorage.setItem('id', token['token'])
-          Router.push("/Home");
+          Router.push({
+            pathname: "/Home",
+            query: {id: token['token']}
+          });
         });
     } else {
       $("#invalid").show();
