@@ -15,8 +15,6 @@ const Navbar = ({ indexPage }) => {
     if (e.which == 13) {
       e.preventDefault();
       Router.push({
-
-<<<<<<< HEAD
         pathname: '/category/library',
         query: { search: search }
       })
@@ -28,24 +26,6 @@ const Navbar = ({ indexPage }) => {
       query: { search: search }
     })
   }
-=======
-  const onEnter = (e) => {
-    if (e.which == 13) {
-      e.preventDefault();
-      router.push({
-        pathname: "/category/library",
-        query: { search: search },
-      });
-    }
-  };
-
-  const onSearch = () => {
-    router.push({
-      pathname: "/category/library",
-      query: { search: search },
-    });
-  };
->>>>>>> 698eb34fd109eccdbecb7624fc3ce157a9b3ed2a
 
   useEffect(() => {
     if (localStorage.getItem("id") != "") {
