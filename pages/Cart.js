@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-
 import styles from "../styles/cart.module.scss";
 
 export default function Cart() {

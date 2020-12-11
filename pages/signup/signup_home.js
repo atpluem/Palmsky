@@ -26,7 +26,7 @@ export default function singup_home() {
         ) {
 
             //$('#next').prop("disabled", false);
-           // validate = 1;
+            // validate = 1;
             const requestOptions = {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
@@ -46,13 +46,13 @@ export default function singup_home() {
                 }).then((responseJson) => {
                     if (canget == 1) {
                         if (JSON.stringify(responseJson).length != 2) {
-                            console.log("yes")
                             $('#checkEmail').show();
                             $('#next').prop("disabled", true);
+                            validate=0;
                         } else {
+                            validate=1;
                             $('#checkEmail').hide();
                             $('#next').prop("disabled", false);
-
                         }
                     }
                 })
@@ -140,12 +140,8 @@ export default function singup_home() {
                             $('#unsuccess').show();
                         }
                     })
-
-
             }
         }
-
-
     }
     var backclick = function () {
         countpage = countpage - 1;

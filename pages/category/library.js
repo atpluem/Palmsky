@@ -11,7 +11,7 @@ const library = () => {
   const [search, setSearch] = useState([]);
 
   const router = useRouter();
-
+ 
   useEffect(() => {
     const fetchdata = async () => {
       const response = await fetch(
@@ -60,7 +60,7 @@ const library = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar indexPage={2} />
 
       {/* Notice */}
       {/* After Back-End is finish, this jsx will use map function */}
@@ -90,14 +90,17 @@ const library = () => {
           >
             <a
               className="dropdown-item text-white hover-select"
+              type="button"
               onClick={() => selectCategory("all")}
             >
               All
             </a>
+            <div className="dropdown-divider" style={{ borderColor: "#781414" }}></div>
             {book.map((option, keys) => (
               <a
                 className="dropdown-item text-white hover-select"
                 key={keys}
+                type="button"
                 onClick={() => selectCategory(option.word)}
               >
                 {option.word}
@@ -109,7 +112,7 @@ const library = () => {
 
       <div className="container">
         {/* Search */}
-        <div id="searchTag" style={{ display: "none" }}>
+        <div className="mt-5" id="searchTag" style={{ display: "none" }}>
           <div className="d-flex flex-row">
             <p className="pr-2 h5 ">Search</p>
             <hr style={{ width: "100%", borderTop: "1px solid black" }} />
